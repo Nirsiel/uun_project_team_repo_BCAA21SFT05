@@ -1,0 +1,24 @@
+{
+  "name": "bcaa05-cookbook-be",
+  "version": "1.0.0",
+  "description": "BCAA-05 semestral project the Cookbook.",
+  "main": "app.js",
+  "scripts": {
+    "start": "node ./app.js",
+    "dev": "nodemon app.js"
+  },
+  "keywords": [
+    "bcaa-05",
+    "cookbook"
+  ],
+  "author": "BCAA-05 team",
+  "license": "GPL-3.0-or-later",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7",
+    "eslint": "^7.23.0",
+    "eslint-plugin-json": "^2.1.2"
+  }
+}
