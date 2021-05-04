@@ -12,9 +12,8 @@
     "cookbook"
   ],
   "author": "BCAA-05 team",
-  "license": "GPL-3.0-or-later",
+  "license": "LGPL-3.0-only",
   "dependencies": {
-    "axios": "^0.21.1",
     "express": "^4.17.1"
   },
   "devDependencies": {
