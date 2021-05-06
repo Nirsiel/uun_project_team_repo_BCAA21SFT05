@@ -2,7 +2,9 @@ const express = require("express");
 const mongoose = require("mongoose");
 const {port, db_connection} = require("./config.js");
 //routes 
-
+const keywordsRoute = require("./routes/keywords-route");
+const materialsRoute = require("./routes/materials-route");
+const recipesRoute = require("./routes/recipes-route");
 
 //config
 const app = express();
@@ -15,6 +17,10 @@ mongoose.connect(`${db_connection}`,
 ).then(result => console.log("")).catch(exception => console.log(exception));
 
 //routes binding
+app.use("/keywords", keywordsRoute);
+app.use("/materials", materialsRoute);
+app.use("/recipes", recipesRoute);
+
 
 //server start
 app.listen(port, () => {
