@@ -1,7 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const {port, db_connection} = require("./config.js");
-//routes 
+//routes
 const keywordsRoute = require("./routes/keywords-route");
 const materialsRoute = require("./routes/materials-route");
 const recipesRoute = require("./routes/recipes-route");
@@ -12,9 +12,10 @@ app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
 //database connection
-mongoose.connect(`${db_connection}`,
-    {useNewUrlParser: true, useUnifiedTopology: true}
-).then(result => console.log("")).catch(exception => console.log(exception));
+mongoose
+    .connect(`${db_connection}`, {useNewUrlParser: true, useUnifiedTopology: true})
+    .then(() => console.log("Connected to Database"))
+    .catch(exception => console.log(exception));
 
 //routes binding
 app.use("/keywords", keywordsRoute);
