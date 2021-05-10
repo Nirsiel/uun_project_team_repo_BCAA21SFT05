@@ -18,7 +18,7 @@ const getKeywordById = async (req, res) => {
 
     try{
         result = await Keyword.findById(keywordId);
-        res.status(200).json({valid: true, result: result});
+        res.status(200).json({valid: true, result});
     }
     catch (exception) {
         res.status(500).json({valid: false, exception})
@@ -33,7 +33,7 @@ const addNewKeyword = async (req, res) => {
 
     try{
         result = await createdKeyword.save();
-        res.status(201).json({ valid: true, result: result });
+        res.status(201).json({ valid: true, result });
     }
     catch (exception) {
         console.log(exception);
@@ -48,7 +48,6 @@ const editKeyword = async (req, res) => {
 
     try{
         updatedKeyword = await Keyword.findById(keywordId);
-        //res.status(200).json({valid: true, result: updatedKeyword});
     }
     catch (exception) {
         res.status(500).json({valid: false, exception})
@@ -63,7 +62,25 @@ const editKeyword = async (req, res) => {
     }
 }
 
-const deleteKeyword = (req, res) => {}
+const deleteKeyword = async (req, res) => {
+    let keywordId = req.params.id;
+    let keyword;
+
+    try{
+        keyword = await Keyword.findById(keywordId);
+    }
+    catch (exception){
+        res.status(500).json({valid: false, exception});
+    }
+
+    try{
+        await keyword.remove();
+        res.status(200).json({valid: true, message: `keyword ${keyword.value} removed`});
+    }
+    catch(exception){
+        res.status(500).json({valid: false, exception});
+    }
+}
 
 exports.getAllKeywords = getAllKeywords;
 exports.getKeywordById = getKeywordById;
