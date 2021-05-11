@@ -1,12 +1,15 @@
 const mongoose = require("mongoose");
-const keyword = require("./keyword");
-const materials = require("./materials");
 
 const recipeSchema = mongoose.Schema({
+    createdOn: {type: Date, required: true},
+    name: {type: String, required: true},
     description: {type: String, required: false},
     instructions: {type: String, required: true},
-    timeToPrepare: {type: Number, required: true},
-    materials: {type: mongoose.Types.ObjectId, required: true, ref: "Material"},
+    timeToPrepare: {type: String, required: true},
+    materials: [{
+        ingredient: {type: String, required: true},
+            amount: {type: String, required: true}
+        }],
     keywords: [{type: mongoose.Types.ObjectId, required: false, ref: "Keyword"}]
 });
 
