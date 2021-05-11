@@ -1,3 +1,5 @@
+//TODO: left for legacy purposes.
+
 const mongoose = require("mongoose");
 
 const materialsSchema = mongoose.Schema({

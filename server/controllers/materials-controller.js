@@ -1,3 +1,5 @@
+//TODO: left for legacy purposes.
+
 const Materials = require("../models/materials");
 
 const getAllMaterials = async (req, res) => {
@@ -26,7 +28,7 @@ const getMaterialById = async (req, res) => {
 const addNewMaterial = async (req, res) => {
     const newMaterials = new Materials({
         values: req.body.values
-    })
+    });
     let result;
 
     try{
@@ -44,7 +46,6 @@ const editMaterial = async (req, res) => {
 
     try{
         updatedMaterials = await Materials.findById(materialId);
-        //res.status(200).json({valid: true, result: updatedMaterials});
     }
     catch (exception) {
         res.status(500).json({valid: false, exception})
