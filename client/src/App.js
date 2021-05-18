@@ -1,25 +1,34 @@
-import logo from './logo.svg';
 import './App.css';
+import Main from './pages/Main';
+import CreateRecipe from './pages/CreateRecipe';
+import ShowRecipe from './pages/ShowRecipe';
 
-function App() {
+import NavigationBar from './components/NavigationBar';
+import Footer from './components/Footer'
+
+import ScrollToTop from './Functions/ScrollToTop'
+
+import {BrowserRouter, Switch, Route, Link} from "react-router-dom";
+
+
+
+
+import React from 'react'
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <BrowserRouter>
+    <NavigationBar></NavigationBar>
+    <ScrollToTop />
+      <Switch>
+        <Route exact path="/" component={Main} />
+        <Route exact path="/create-recipe" component={CreateRecipe} />
+        <Route exact path="/show-recipe" component={ShowRecipe} />
+      </Switch>
+     <Footer></Footer> 
+    </BrowserRouter>
+  )
 }
 
-export default App;
+export default App
+
