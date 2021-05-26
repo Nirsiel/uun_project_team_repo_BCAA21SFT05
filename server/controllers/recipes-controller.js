@@ -1,18 +1,30 @@
 const Recipe = require("../models/recipe");
 const Conversions = require("../util/conversions");
 
+/**
+ * Returns response object with all recipes in database.
+ * @param req
+ * @param res
+ * @returns {Promise<void>}
+ */
 const getAllRecipes = async (req, res) => {
     let result;
 
     try{
         result = await Recipe.find();
-        res.status(200).json({valid: true, result});
+        res.status(200).json({valid: true, results: result});
     }
     catch (exception) {
         res.status(500).json({valid: false, exception});
     }
 }
 
+/**
+ * Returns response object with recipe specified by ID.
+ * @param req
+ * @param res
+ * @returns {Promise<void>}
+ */
 const getRecipeById = async (req, res) => {
     const recipeId = req.params.id;
     let result;
@@ -26,11 +38,17 @@ const getRecipeById = async (req, res) => {
     }
 }
 
+/**
+ * Creates new recipe from request and return response object with status.
+ * @param req
+ * @param res
+ * @returns {Promise<void>}
+ */
 const addNewRecipe = async (req, res) => {
     const {name, description, instructions, timeToPrepare, materials, keywords} = req.body;
 
     const newRecipe = new Recipe({
-        createdOn: Conversions.convertToNormalDate(new Date()),
+        createdOn: new Date(),
         name: name,
         description: description,
         instructions: instructions,
@@ -48,6 +66,14 @@ const addNewRecipe = async (req, res) => {
         res.status(500).json({valid: false, exception});
     }
 }
+
+/**
+ * Takes a ID of existing recipe document and its new version and updated recipe in database.
+ * Returns a response object with status.
+ * @param req
+ * @param res
+ * @returns {Promise<void>}
+ */
 const editRecipe = async (req, res) => {
     const recipeId = req.params.id;
     const {name, description, instructions, timeToPrepare, materials, keywords} = req.body;
@@ -55,7 +81,7 @@ const editRecipe = async (req, res) => {
 
     try{
         updatedRecipe = await Recipe.findById(recipeId);
-    } 
+    }
     catch (exception) {
         res.status(500).json({valid: false, exception});
     }
@@ -75,6 +101,13 @@ const editRecipe = async (req, res) => {
     }
 
 }
+
+/**
+ * Deletes recipe document from database specified by ID.
+ * @param req
+ * @param res
+ * @returns {Promise<void>}
+ */
 const deleteRecipe = async (req, res) => {
     let recipeId = req.params.id;
     let recipe;

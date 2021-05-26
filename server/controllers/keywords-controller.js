@@ -1,17 +1,29 @@
 const Keyword = require("../models/keyword");
 
+/**
+ * Returns response object with all keywords in database.
+ * @param req
+ * @param res
+ * @returns {Promise<void>}
+ */
 const getAllKeywords = async (req, res) => {
     let result;
 
     try{
         result = await Keyword.find().exec();
-        res.status(200).json({ valid: true, result: result })
+        res.status(200).json({ valid: true, results : result })
     }
     catch (exception){
         res.status(500).json({valid: false, exception})
     }
 }
 
+/**
+ * Returns response object with keyword specified by ID.
+ * @param req
+ * @param res
+ * @returns {Promise<void>}
+ */
 const getKeywordById = async (req, res) => {
     const keywordId = req.params.id;
     let result;
@@ -25,6 +37,12 @@ const getKeywordById = async (req, res) => {
     }
 }
 
+/**
+ * Creates new keyword from request and return response object with status.
+ * @param req
+ * @param res
+ * @returns {Promise<void>}
+ */
 const addNewKeyword = async (req, res) => {
     const createdKeyword = new Keyword({
         value: req.body.value
@@ -41,6 +59,13 @@ const addNewKeyword = async (req, res) => {
     }
 }
 
+/**
+ * Takes a ID of existing keyword document and its new version and updated recipe in database.
+ * Returns a response object with status.
+ * @param req
+ * @param res
+ * @returns {Promise<void>}
+ */
 const editKeyword = async (req, res) => {
     const keywordId = req.params.id;
     const { value } = req.body;
@@ -62,6 +87,12 @@ const editKeyword = async (req, res) => {
     }
 }
 
+/**
+ * Deletes keyword document from database specified by ID.
+ * @param req
+ * @param res
+ * @returns {Promise<void>}
+ */
 const deleteKeyword = async (req, res) => {
     let keywordId = req.params.id;
     let keyword;
