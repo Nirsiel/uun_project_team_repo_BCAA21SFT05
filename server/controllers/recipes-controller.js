@@ -1,4 +1,4 @@
-const Recipe = require("../models/recipe");i
+const Recipe = require("../models/recipe");
 
 /**
  * Returns response object with all recipes in database.
