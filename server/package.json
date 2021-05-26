@@ -5,7 +5,8 @@
   "main": "app.js",
   "scripts": {
     "start": "node ./app.js",
-    "dev": "nodemon app.js"
+    "dev": "nodemon app.js",
+    "gen-docs": "node_modules/.bin/jsdoc -c jsdoc.json"
   },
   "keywords": [
     "bcaa-05",
@@ -19,8 +20,10 @@
     "mongoose": "^5.12.7"
   },
   "devDependencies": {
-    "nodemon": "^2.0.7",
+    "docdash": "^1.2.0",
     "eslint": "^7.23.0",
-    "eslint-plugin-json": "^2.1.2"
+    "eslint-plugin-json": "^2.1.2",
+    "jsdoc": "~3.6.7",
+    "nodemon": "^2.0.7"
   }
 }

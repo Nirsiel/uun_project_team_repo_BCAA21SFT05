@@ -1,0 +1,59 @@
+{
+  "docdash": {
+    "sort": [true],
+    "sectionOrder": [
+      "Classes",
+      "Modules",
+      "Externals",
+      "Events",
+      "Namespaces",
+      "Mixins",
+      "Tutorials",
+      "Interfaces"
+    ],
+    "meta": {
+      "title": "Cookbook server documentation",
+      "description": "BCAA - 05 Cookbook server documentation",
+      "keyword": ""
+    },
+    "search": [true],
+    "collapse": [true],
+    "menu": {
+      "Project baseline": {
+        "href":"https://uuapp.plus4u.net/uu-bookkit-maing01/e962bac6fb5a4b5a82b0e761ac50146c/book/page?code=87998961",
+        "target":"_blank",
+        "class":"menu-item",
+        "id":"project_link"
+      },
+      "Git repository": {
+        "href":"https://lns.nobin.dev/oEYb9d",
+        "target":"_blank",
+        "class":"menu-item",
+        "id":"git_link"
+      }
+    }
+  },
+  "tags": {
+    "allowUnknownTags": false
+  },
+  "source": {
+    "include": [".\\controllers\\", ".\\models\\", ".\\routes\\", ".\\utils\\", ".\\app.js"],
+    "exclude": [".\\node_modules\\"],
+    "includePattern": ".+\\.js(doc|x)?$",
+    "excludePattern": "(node_modules/|docs)"
+  },
+  "plugins": [
+    "plugins/markdown"
+  ],
+  "opts": {
+    "template": "node_modules\\docdash\\",
+    "encoding": "utf8",
+    "destination": "..\\docs\\server\\",
+    "recurse": true,
+    "verbose": true
+  },
+  "templates": {
+    "cleverLinks": false,
+    "monospaceLinks": false
+  }
+}
