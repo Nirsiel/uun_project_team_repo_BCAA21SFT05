@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>controllers/keywords-controller.js - Cookbook server documentation</title>
+    
+    <meta name="description" content="BCAA - 05 Cookbook server documentation" />
+    
+    
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <script src="scripts/nav.js" defer></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav >
+    
+    <input type="text" id="nav-search" placeholder="Search" />
+    
+    <h2><a href="index.html">Home</a></h2><h2><a href="https://uuapp.plus4u.net/uu-bookkit-maing01/e962bac6fb5a4b5a82b0e761ac50146c/book/page?code=87998961" target="_blank" class="menu-item" id="project_link" >Project baseline</a></h2><h2><a href="https://lns.nobin.dev/oEYb9d" target="_blank" class="menu-item" id="git_link" >Git repository</a></h2><h3>Classes</h3><ul><li><a href="Conversions.html">Conversions</a><ul class='methods'><li data-type='method' style='display: none;'><a href="Conversions.html#.convertToNormalDate">convertToNormalDate</a></li></ul></li></ul><h3>Global</h3><ul><li><a href="global.html#addNewKeyword">addNewKeyword</a></li><li><a href="global.html#addNewRecipe">addNewRecipe</a></li><li><a href="global.html#deleteKeyword">deleteKeyword</a></li><li><a href="global.html#deleteRecipe">deleteRecipe</a></li><li><a href="global.html#editKeyword">editKeyword</a></li><li><a href="global.html#editRecipe">editRecipe</a></li><li><a href="global.html#getAllKeywords">getAllKeywords</a></li><li><a href="global.html#getAllRecipes">getAllRecipes</a></li><li><a href="global.html#getKeywordById">getKeywordById</a></li><li><a href="global.html#getRecipeById">getRecipeById</a></li><li><a href="global.html#keywordSchema">keywordSchema</a></li><li><a href="global.html#recipeSchema">recipeSchema</a></li></ul>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">controllers/keywords-controller.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>const Keyword = require("../models/keyword");
+
+/**
+ * Returns response object with all keywords in database.
+ * @param req
+ * @param res
+ * @returns {Promise&lt;void>}
+ */
+const getAllKeywords = async (req, res) => {
+    let result;
+
+    try{
+        result = await Keyword.find().exec();
+        res.status(200).json({ valid: true, results : result })
+    }
+    catch (exception){
+        res.status(500).json({valid: false, exception})
+    }
+}
+
+/**
+ * Returns response object with keyword specified by ID.
+ * @param req
+ * @param res
+ * @returns {Promise&lt;void>}
+ */
+const getKeywordById = async (req, res) => {
+    const keywordId = req.params.id;
+    let result;
+
+    try{
+        result = await Keyword.findById(keywordId);
+        res.status(200).json({valid: true, result});
+    }
+    catch (exception) {
+        res.status(500).json({valid: false, exception})
+    }
+}
+
+/**
+ * Creates new keyword from request and return response object with status.
+ * @param req
+ * @param res
+ * @returns {Promise&lt;void>}
+ */
+const addNewKeyword = async (req, res) => {
+    const createdKeyword = new Keyword({
+        value: req.body.value
+    });
+    let result;
+
+    try{
+        result = await createdKeyword.save();
+        res.status(201).json({ valid: true, result });
+    }
+    catch (exception) {
+        console.log(exception);
+        res.status(500).json({ valid: false, exception });
+    }
+}
+
+/**
+ * Takes a ID of existing keyword document and its new version and updated recipe in database.
+ * Returns a response object with status.
+ * @param req
+ * @param res
+ * @returns {Promise&lt;void>}
+ */
+const editKeyword = async (req, res) => {
+    const keywordId = req.params.id;
+    const { value } = req.body;
+    let updatedKeyword;
+
+    try{
+        updatedKeyword = await Keyword.findById(keywordId);
+    }
+    catch (exception) {
+        res.status(500).json({valid: false, exception})
+    }
+    updatedKeyword.value = value;
+    try{
+        let result = await updatedKeyword.save();
+        res.status(200).json({valid: true, result: result});
+    }
+    catch (exception){
+        res.status(500).json({valid: false, exception})
+    }
+}
+
+/**
+ * Deletes keyword document from database specified by ID.
+ * @param req
+ * @param res
+ * @returns {Promise&lt;void>}
+ */
+const deleteKeyword = async (req, res) => {
+    let keywordId = req.params.id;
+    let keyword;
+
+    try{
+        keyword = await Keyword.findById(keywordId);
+    }
+    catch (exception){
+        res.status(500).json({valid: false, exception});
+    }
+
+    try{
+        await keyword.remove();
+        res.status(200).json({valid: true, message: `keyword ${keyword.value} removed`});
+    }
+    catch(exception){
+        res.status(500).json({valid: false, exception});
+    }
+}
+
+exports.getAllKeywords = getAllKeywords;
+exports.getKeywordById = getKeywordById;
+exports.addNewKeyword = addNewKeyword;
+exports.editKeyword = editKeyword;
+exports.deleteKeyword = deleteKeyword;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+    
+    
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.7</a> on Wed May 26 2021 19:42:39 GMT+0200 (Central European Summer Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/polyfill.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+<script src="scripts/search.js" defer></script>
+
+
+<script src="scripts/collapse.js" defer></script>
+
+
+</body>
+</html>
