@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "author": "BCAA-05 team",
-  "license": "GPL-3.0-or-later",
+  "license": "LGPL-3.0-only",
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.10",
     "@testing-library/react": "^11.2.6",
@@ -40,5 +40,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "proxy": "http://localhost:5000"
 }

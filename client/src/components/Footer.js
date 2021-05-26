@@ -16,9 +16,6 @@ const Footer = () => {
             Jan Novák
           </li>
           <li className="px-3">
-            Pavlík Roman
-          </li>
-          <li className="px-3">
             Martin Haloda
           </li>
           <li className="px-3">
@@ -28,9 +25,9 @@ const Footer = () => {
     </section>
   </div>
 
-  <div class="text-center p-3">
-    © 2021 BCAA 005: 
-    <a class="text-white" href="https://unicornuniversity.net/"> Unicorn Vysoká škola s.r.o.</a>
+  <div className="text-center p-3">
+     BCAA 005 © 2021  |
+    <a className="text-white" href="https://unicornuniversity.net/"> Unicorn Vysoká škola s.r.o.</a>
   </div>
 </footer>
     )
