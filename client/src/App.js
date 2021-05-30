@@ -4,31 +4,28 @@ import CreateRecipe from './pages/CreateRecipe';
 import ShowRecipe from './pages/ShowRecipe';
 
 import NavigationBar from './components/NavigationBar';
-import Footer from './components/Footer'
+import Footer from './components/Footer';
 
-import ScrollToTop from './Functions/ScrollToTop'
+import ScrollToTop from './Functions/ScrollToTop';
 
-import {BrowserRouter, Switch, Route, Link} from "react-router-dom";
+import {BrowserRouter, Switch, Route} from 'react-router-dom';
 
-
-
-
-import React from 'react'
+import React from 'react';
 
 const App = () => {
   return (
-    <BrowserRouter>
-    <NavigationBar></NavigationBar>
-    <ScrollToTop />
-      <Switch>
-        <Route exact path="/" component={Main} />
-        <Route exact path="/create-recipe" component={CreateRecipe} />
-        <Route exact path="/show-recipe" component={ShowRecipe} />
-      </Switch>
-     <Footer></Footer> 
-    </BrowserRouter>
-  )
-}
+      <BrowserRouter>
+        <NavigationBar/>
+        <ScrollToTop/>
+        <Switch>
+          <Route exact path="/" component={Main}/>
+          <Route exact path="/create-recipe" component={CreateRecipe}/>
+          <Route exact path="/show-recipe/:recipeId" component={ShowRecipe}/>
+        </Switch>
+        <Footer/>
+      </BrowserRouter>
+  );
+};
 
-export default App
+export default App;
 
