@@ -23,14 +23,21 @@ const ShowRecipe = () => {
                         </div>
                         <p className="my-4">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Amet reiciendis officia labore molestias reprehenderit ea quia obcaecati, impedit cumque unde aliquid in eligendi, quod minima illo nesciunt dicta repellendus ex?</p>
                         <br/>
-                        <p>Tu bude zoznam keywordov</p>
+                        <div>
+                            <span className="keyword-badge badge">With Cucumber</span>
+                            <span className="keyword-badge badge">Fast</span>
+                            <span className="keyword-badge badge">Easy</span>
+                            <span className="keyword-badge badge">Just one ingredient</span>
+                            <span className="keyword-badge badge">Cucumber power</span>
+                            <span className="keyword-badge badge">juicy</span>
+                        </div>
                     </Col>
                 </Row>
                 </Container>
                 <article>
                     <Container className="p-4">
                         <Row className="align-items-start">
-                            <Col className="bg-white" xs={4}>
+                            <Col className="sticky-top ingredient-list bg-white" xs={4}>
                                 <ul className="p-3">
                                     <li className="pb-2"><h3>Ingredient</h3></li>
                                     <li className="ingredient-list-li clearfix">
@@ -45,6 +52,7 @@ const ShowRecipe = () => {
                                         <img className="ingredient-list-photo" src="https://static.libertyprim.com/files/varietes/concombre-hollandais-large.jpg?1569524167" width="60px" height="60px" />
                                         <p>7 cucumber</p>
                                     </li>
+                                    
                                 </ul>
                             </Col>
                             <Col className="bg-white" md={{ span: 7, offset: 1 }}>

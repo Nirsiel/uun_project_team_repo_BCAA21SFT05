@@ -1,7 +1,7 @@
 import { Button, Navbar, Nav, NavDropdown, Form, FormControl, Container, Row, Col, Table, Carousel, CarouselItem, CarouselCaption, Card, CardBody, CardImg, } from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import React from 'react'
-
+import ReactDOM from 'react-dom'
 
 const CreateRecipe = () => {
     return (
@@ -10,25 +10,55 @@ const CreateRecipe = () => {
                 <Row>
                     <Col md={6}>
                         <Form>
-                            <Form.Group controlId="exampleForm.ControlInput1">
+                            <Form.Group controlId="create-recipe-form1">
                                 <Form.Label>Recipe name</Form.Label>
                                 <Form.Control type="text" placeholder="Grilled chicken" />
                             </Form.Group>
-                            <Form.Group controlId="exampleForm.ControlSelect1">
-                                <Form.Label>Number of people</Form.Label>
-                                <Form.Control as="select">
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
-                                </Form.Control>
+                            <Form.Group controlId="create-recipe-form2">
+                                <Form.Label>Time To Prepare</Form.Label>
+                                <Form.Control type="number" placeholder="min" />
                             </Form.Group>
-                            <Form.Group controlId="exampleForm.ControlTextarea1">
-                                <Form.Label>Example textarea</Form.Label>
-                                <Form.Control as="textarea" rows={3} />
+                            <Form.Group controlId="create-recipe-form4">
+                                <Form.Label >Description</Form.Label>
+                                <Form.Control min="0" max="100" as="textarea" rows={3} />
                             </Form.Group>
-                            <Button variant="primary" type="submit">
+                            <Form.Group controlId="create-recipe-form4">
+                            <Row id="test-render">
+                                <Col> 
+                                    <Form.Label>Ingredient</Form.Label> 
+                                    <Form.Control type="text"/>
+                                </Col>
+                                <Col>
+                                    <Form.Label >Amount</Form.Label>
+                                    <Form.Control type="text"/>
+                                </Col>
+                            </Row>
+                            <a className="pointer">+ Add another one</a>
+                            </Form.Group>
+
+                            <Form.Group controlId="create-recipe-form4">
+                                <Form.Check
+                                    type="checkbox"
+                                    className="checkbox"
+                                    inline
+                                    label="Fast"
+                                />
+                                <Form.Check
+                                    type="checkbox"
+                                    className="checkbox"
+                                    inline
+                                    label="Easy"
+                                   
+                                />
+                                <Form.Check
+                                    type="checkbox"
+                                    className="checkbox"
+                                    inline
+                                    label="Idk"
+                                />
+                            </Form.Group>
+
+                            <Button className="mt-4" variant="primary" type="submit">
                                 Submit
                             </Button>
                         </Form>

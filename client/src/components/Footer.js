@@ -16,6 +16,9 @@ const Footer = () => {
             Jan Novák
           </li>
           <li className="px-3">
+          <i class="fas fa-skull-crossbones"></i> Pavlík Roman
+          </li>
+          <li className="px-3">
             Martin Haloda
           </li>
           <li className="px-3">

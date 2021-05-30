@@ -35,6 +35,10 @@ article {
   background-color: red;
 }
 
+.pointer {
+  cursor: pointer;
+}
+
 /* Texts */
 h1 {
   font-size: 60px !important;
@@ -123,6 +127,10 @@ td {
 
 /* Ingredient list */
 
+.ingredient-list {
+  top: 20px !important;
+}
+
 .ingredient-list-li {
   display: flex;
   align-items: center;
@@ -156,4 +164,28 @@ td {
 .carousel-bug-fix {
   display: block !important;
   margin: 0 !important;
+}
+
+/* Keyword */
+
+.keyword-badge {
+  margin: 5px 5px 5px 5px;
+  background-color: rgba(231, 105, 66, .9);
+  color: white;
+  font-size: 1.2em !important;
+}
+
+
+/* checkbox */
+
+.checkbox {
+  background-color: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(58, 58, 58, 0.4);
+  padding-left: 10px !important;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.checkbox:checked {
+  border: 2px solid black;
 }
