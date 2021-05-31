@@ -6,7 +6,7 @@ import RecipeService from '../services/RecipeService';
 
 const Main = () => {
 
-  const [recipes, setRecipes] = useState( []);
+  const [recipes, setRecipes] = useState([]);
 
   const loadRecipesHandler = useCallback(async () => {
     let data = await RecipeService.getAllRecipes();
@@ -18,7 +18,6 @@ const Main = () => {
   useEffect(() => {
     loadRecipesHandler();
   }, [loadRecipesHandler]);
-
 
   return (
       <div className="Main">

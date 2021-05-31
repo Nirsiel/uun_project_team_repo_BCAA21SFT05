@@ -3,6 +3,7 @@ import React, {useCallback, useEffect, useState} from 'react';
 import {Container, Row, Col, Image} from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import RecipeService from '../services/RecipeService';
+import KeywordsService from '../services/KeywordsService';
 import RecipeKeywords from '../components/RecipeDetail/RecipeKeywords';
 
 const ShowRecipe = ({match}) => {
@@ -20,11 +21,13 @@ const ShowRecipe = ({match}) => {
     ],
   };
   const [recipe, setRecipe] = useState('');
-  // const [keywords, setKeywords] = useState([]);
+  const [keywords, setKeywords] = useState([]);
 
   const getCurrentRecipeHandler = useCallback(async (recipeId) => {
-    let data = await RecipeService.getRecipeById(recipeId);
-    setRecipe(data.result);
+    let recipeData = await RecipeService.getRecipeById(recipeId);
+    setRecipe(recipeData.result);
+    let keywordsData = await KeywordsService.getKeywordsByIds(recipeData.result.keywords);
+    setKeywords(keywordsData.results);
   }, []);
 
   useEffect(() => {
@@ -34,7 +37,6 @@ const ShowRecipe = ({match}) => {
   if (!recipe) {
     return <div>Loading...</div>;
   }
-
   return (
       <section className="pt-5">
         <Container>
@@ -58,7 +60,7 @@ const ShowRecipe = ({match}) => {
               </div>
               <p className="my-4">{recipe.description}</p>
               <br/>
-              <RecipeKeywords items={recipe.keywords}/>
+              <RecipeKeywords items={keywords}/>
             </Col>
           </Row>
         </Container>

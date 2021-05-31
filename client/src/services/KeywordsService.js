@@ -8,7 +8,18 @@ export default class KeywordsService {
   }
 
   static async getKeywordById(keywordId) {
-    const result = await axios.get(`${API_URL}/keywords/${keywordId}`);
+    const result = await axios.post(`${API_URL}/keywords/${keywordId}`);
+    return result.data;
+  }
+
+  static async getKeywordsByIds(keywordsIds) {
+    let data = {
+      'values': [
+          ...keywordsIds,
+      ],
+    };
+    const result = await axios.post(`${API_URL}/keywords/byIds`, data);
+    console.log("getKeywordsByIds result: " + result.data);
     return result.data;
   }
 

@@ -18,6 +18,29 @@ const getAllKeywords = async (req, res) => {
 };
 
 /**
+ * Returns response object with keywords specified in request body.
+ * @param req
+ * @param res
+ * @returns {Promise<void>}
+ */
+const getKeywordsByIds = async (req, res) => {
+  const keywordsIds = req.body.values;
+  let results;
+  try {
+    results = await Promise.all(keywordsIds.map(async (id) => {
+      return await Keyword.findById(id);
+    }));
+    //returning array with spread results, cause it won't make one on its own.
+    res.status(203).json({
+      valid: true,
+      results: [...results],
+    });
+  } catch (exception) {
+    res.status(500).json({valid: false, exception});
+  }
+};
+
+/**
  * Returns response object with keyword specified by ID.
  * @param req
  * @param res
@@ -108,6 +131,7 @@ const deleteKeyword = async (req, res) => {
 };
 
 exports.getAllKeywords = getAllKeywords;
+exports.getKeywordsByIds = getKeywordsByIds;
 exports.getKeywordById = getKeywordById;
 exports.addNewKeyword = addNewKeyword;
 exports.editKeyword = editKeyword;
