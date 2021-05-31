@@ -9,11 +9,18 @@ const Main = () => {
   const [recipes, setRecipes] = useState([]);
 
   const loadRecipesHandler = useCallback(async () => {
-    let data = await RecipeService.getAllRecipes();
-    setRecipes((prevState => {
+    let data = await RecipeService.getLimitedRecipes(3);
+    setRecipes((prevState) => {
       return [...prevState, ...data.results];
-    }));
+    });
   }, []);
+
+  const loadNextRecipesHandler = async () => {
+    let data = await RecipeService.getNextRecipes(recipes.length, 3);
+    setRecipes((prevState) => {
+      return [...prevState, ...data.results];
+    })
+  }
 
   useEffect(() => {
     loadRecipesHandler();
@@ -72,6 +79,13 @@ const Main = () => {
               </div>
             </div>
             {<RecipeList items={recipes}/>}
+            <div className="text-center">
+              <Button onClick={loadNextRecipesHandler} className="rounded-0 search-button"
+                      type="button">
+                Load more
+              </Button>
+            </div>
+
           </Container>
         </section>
       </div>

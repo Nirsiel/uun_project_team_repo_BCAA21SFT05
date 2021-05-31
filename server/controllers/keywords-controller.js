@@ -31,7 +31,7 @@ const getKeywordsByIds = async (req, res) => {
       return await Keyword.findById(id);
     }));
     //returning array with spread results, cause it won't make one on its own.
-    res.status(203).json({
+    res.status(200).json({
       valid: true,
       results: [...results],
     });

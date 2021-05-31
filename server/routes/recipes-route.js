@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 
 //Controllers
-const { getAllRecipes,getLimitedRecipes, getNextNRecipes, getRecipeById, addNewRecipe, editRecipe, deleteRecipe } = require("../controllers/recipes-controller");
+const { getAllRecipes,getLimitedRecipes, getNextRecipes, getRecipeById, addNewRecipe, editRecipe, deleteRecipe } = require("../controllers/recipes-controller");
 
 //routing
 
@@ -13,7 +13,7 @@ router.get("/", getAllRecipes);
 router.get("/limit/:limit", getLimitedRecipes);
 
 //getting next n recipes while having x
-router.get("/next/:have/:next",getNextNRecipes);
+router.get("/next/:have/:next",getNextRecipes);
 
 //getting id specific recipe
 router.get("/:id", getRecipeById);

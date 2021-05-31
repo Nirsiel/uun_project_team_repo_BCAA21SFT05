@@ -21,7 +21,7 @@ const getAllRecipes = async (req, res) => {
 
 const getLimitedRecipes = async (req, res) => {
     const limit = parseInt(req.params.limit);
-    console.log(limit);
+    console.log("getLimitedRecipes limit: "+limit);
     let result;
 
     try{
@@ -34,7 +34,7 @@ const getLimitedRecipes = async (req, res) => {
     }
 }
 
-const getNextNRecipes = async (req, res) => {
+const getNextRecipes = async (req, res) => {
     const have = parseInt(req.params.have);
     const next = parseInt(req.params.next);
     let result;
@@ -160,7 +160,7 @@ const deleteRecipe = async (req, res) => {
 
 exports.getAllRecipes = getAllRecipes;
 exports.getLimitedRecipes = getLimitedRecipes;
-exports.getNextNRecipes = getNextNRecipes;
+exports.getNextRecipes = getNextRecipes;
 exports.getRecipeById = getRecipeById;
 exports.addNewRecipe = addNewRecipe;
 exports.editRecipe = editRecipe;
