@@ -26,7 +26,8 @@ const ShowRecipe = ({match}) => {
   const getCurrentRecipeHandler = useCallback(async (recipeId) => {
     let recipeData = await RecipeService.getRecipeById(recipeId);
     setRecipe(recipeData.result);
-    let keywordsData = await KeywordsService.getKeywordsByIds(recipeData.result.keywords);
+    let keywordsData = await KeywordsService.getKeywordsByIds(
+        recipeData.result.keywords);
     setKeywords(keywordsData.results);
   }, []);
 
@@ -56,7 +57,7 @@ const ShowRecipe = ({match}) => {
                 <span className="fa fa-star checked"></span>
                 <span className="fa fa-star checked"></span>
                 <span className="fa fa-star unchecked"></span>
-                <span> 9 reviews</span>
+                <span> 666 reviews</span>
               </div>
               <p className="my-4">{recipe.description}</p>
               <br/>
@@ -87,35 +88,13 @@ const ShowRecipe = ({match}) => {
 
                   <li>
                     <div className="clearfix">
-                      <h3 className="float-left p-1 pr-3">1.</h3> <p>Lorem
-                      ipsum,
-                      dolor sit amet
-                      consectetur adipisicing elit. Inventore itaque natus
-                      minus,
-                      totam tenetur fuga
-                      autem consequuntur ea, magni enim ex delectus. Nostrum
-                      dolore illo officiis
-                      repellat excepturi molestias reiciendis?</p>
+                      {/*<h3 className="float-left p-1 pr-3">1.</h3>*/}
+                      <p>
+                        {recipe.instructions}
+                      </p>
                     </div>
                     <img className="mx-auto"
                          src="https://static.libertyprim.com/files/varietes/concombre-hollandais-large.jpg?1569524167"
-                         width="100%" height="auto" alt="Cucumber"/>
-                    <hr/>
-                  </li>
-                  <li>
-                    <div className="clearfix">
-                      <h3 className="float-left p-1 pr-3">2.</h3> <p>Lorem
-                      ipsum,
-                      dolor sit amet
-                      consectetur adipisicing elit. Inventore itaque natus
-                      minus,
-                      totam tenetur fuga
-                      autem consequuntur ea, magni enim ex delectus. Nostrum
-                      dolore illo officiis
-                      repellat excepturi molestias reiciendis?</p>
-                    </div>
-                    <img className="mx-auto"
-                         src="https://www.gustoacademy.cz/image/3861/50/bowl_tereza-havlinova_dolce-vita.jpg"
                          width="100%" height="auto" alt="Cucumber"/>
                     <hr/>
                   </li>
