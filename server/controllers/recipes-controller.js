@@ -18,6 +18,37 @@ const getAllRecipes = async (req, res) => {
     }
 }
 
+
+const getLimitedRecipes = async (req, res) => {
+    const limit = parseInt(req.params.limit);
+    console.log(limit);
+    let result;
+
+    try{
+        result = await Recipe.find().limit(limit).exec();
+        res.status(200).json({valid: true, results: result});
+    }
+    catch (exception)
+    {
+        res.status(500).json({valid: false, exception});
+    }
+}
+
+const getNextNRecipes = async (req, res) => {
+    const have = parseInt(req.params.have);
+    const next = parseInt(req.params.next);
+    let result;
+
+    try{
+        result = await Recipe.find().skip(have).limit(next);
+        res.status(200).json({valid: true, results: result});
+    }
+    catch (exception)
+    {
+        res.status(500).json({valid: false, exception});
+    }
+}
+
 /**
  * Returns response object with recipe specified by ID.
  * @param req
@@ -128,6 +159,8 @@ const deleteRecipe = async (req, res) => {
 }
 
 exports.getAllRecipes = getAllRecipes;
+exports.getLimitedRecipes = getLimitedRecipes;
+exports.getNextNRecipes = getNextNRecipes;
 exports.getRecipeById = getRecipeById;
 exports.addNewRecipe = addNewRecipe;
 exports.editRecipe = editRecipe;
