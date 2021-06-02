@@ -2,6 +2,7 @@ import './App.css';
 import Main from './pages/Main';
 import CreateRecipe from './pages/CreateRecipe';
 import ShowRecipe from './pages/ShowRecipe';
+import UpdateRecipe from './pages/UpdateRecipe';
 
 import NavigationBar from './components/NavigationBar';
 import Footer from './components/Footer';
@@ -12,6 +13,7 @@ import {BrowserRouter, Switch, Route} from 'react-router-dom';
 
 import React from 'react';
 
+
 const App = () => {
   return (
       <BrowserRouter>
@@ -20,6 +22,7 @@ const App = () => {
         <Switch>
           <Route exact path="/" component={Main}/>
           <Route exact path="/create-recipe" component={CreateRecipe}/>
+          <Route exact path="/update-recipe" component={UpdateRecipe}/>
           <Route exact path="/show-recipe/:recipeId" component={ShowRecipe}/>
         </Switch>
         <Footer/>
