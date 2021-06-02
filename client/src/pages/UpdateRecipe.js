@@ -4,23 +4,37 @@ import React, {useCallback, useEffect, useRef, useState} from 'react';
 import inputValidator from '../hooks/input-validator';
 import KeywordsService from '../services/KeywordsService';
 import NewRecipeForm from '../components/RecipeCreation/NewRecipeForm';
+import RecipeService from '../services/RecipeService';
+import RecipeKeywords from '../components/RecipeDetail/RecipeKeywords';
+import RecipeInstructions from '../components/RecipeDetail/RecipeInstructions';
+import ReactStars from "react-rating-stars-component";
+import {Link} from 'react-router-dom';
 
-
-const UpdateRecipe = () => {
+const UpdateRecipe = ({match}) => {
+  const [recipe, setRecipe] = useState('');
   const [keywords, setKeywords] = useState([]);
 
-  const GetallKeywordHandler = useCallback(async () => {
-    let data = await KeywordsService.getAllKeywords();
-    setKeywords((prevState => {
-      return [...prevState, ...data.results];
-    }));
+  const getCurrentRecipeHandler = useCallback(async (recipeId) => {
+    let recipeData = await RecipeService.getRecipeById(recipeId);
+    setRecipe(recipeData.result);
+    let keywordsData = await KeywordsService.getKeywordsByIds(
+        recipeData.result.keywords);
+    setKeywords(keywordsData.results);
   }, []);
 
-  useEffect(() => {
-    GetallKeywordHandler();
-  }, [GetallKeywordHandler]);
 
+  useEffect(() => {
+    getCurrentRecipeHandler(match.params.recipeId);
+  }, [getCurrentRecipeHandler]);
+
+
+  if (!recipe) {
+    return <div>Loading...</div>;
+  }   
+
+  console.log(recipe);
   return (
+    
       <header className="p-5 bg-info">
         <Container>
           <Row className="justify-content-around">
@@ -29,7 +43,6 @@ const UpdateRecipe = () => {
             </Col>
           </Row>
         </Container>
-
       </header>
   );
 };

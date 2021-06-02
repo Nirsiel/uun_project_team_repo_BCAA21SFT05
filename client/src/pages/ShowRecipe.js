@@ -43,6 +43,7 @@ const ShowRecipe = ({match}) => {
     return <div>Loading...</div>;
   }   
   let instructions = recipe.instructions.split('\n');
+
   return (
       <section className="pt-5">
         <Container>
@@ -103,7 +104,7 @@ const ShowRecipe = ({match}) => {
                 </ul>
               </Col>
             </Row>
-            <Link className="link-clearing fade-link float-right m-2" to="/update-recipe">Update recipe</Link>
+            <Link className="link-clearing fade-link float-right m-2" to={`/update-recipe/${recipe._id}`}>Update recipe</Link>
           </Container>
         </article>
       </section>
