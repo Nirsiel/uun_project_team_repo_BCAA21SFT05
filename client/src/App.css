@@ -30,6 +30,14 @@ header {
 
 }
 
+.search {
+  position: absolute;
+  width: 40%;
+  left: 11%;
+  z-index: 1000;
+  background-color: white;
+}
+
 article {
   background-color: #f4f7fa;
 }
@@ -77,6 +85,14 @@ p {
 .introduction-text {
   font-size: 18px !important;
   color: rgba(29, 28, 28, 0.8);
+}
+
+.fade-link {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.fade-link:hover {
+  color: rgba(0, 0, 0, 0.8);
 }
 
 

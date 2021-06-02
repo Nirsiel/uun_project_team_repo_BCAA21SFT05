@@ -7,6 +7,7 @@ import KeywordsService from '../services/KeywordsService';
 import RecipeKeywords from '../components/RecipeDetail/RecipeKeywords';
 import RecipeInstructions from '../components/RecipeDetail/RecipeInstructions';
 import ReactStars from "react-rating-stars-component";
+import {Link} from 'react-router-dom';
 
 const ShowRecipe = ({match}) => {
   const [recipe, setRecipe] = useState('');
@@ -66,7 +67,7 @@ const ShowRecipe = ({match}) => {
           </Row>
         </Container>
         <article>
-          <Container className="p-4">
+          <Container className="p-4 pb-5">
             <Row className="align-items-start">
               <Col className="sticky-top ingredient-list bg-white" xs={4}>
                 <ul className="p-3">
@@ -102,6 +103,7 @@ const ShowRecipe = ({match}) => {
                 </ul>
               </Col>
             </Row>
+            <Link className="link-clearing fade-link float-right m-2" to="/update-recipe">Update recipe</Link>
           </Container>
         </article>
       </section>
