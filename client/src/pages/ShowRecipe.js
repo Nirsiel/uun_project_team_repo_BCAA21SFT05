@@ -7,19 +7,6 @@ import KeywordsService from '../services/KeywordsService';
 import RecipeKeywords from '../components/RecipeDetail/RecipeKeywords';
 
 const ShowRecipe = ({match}) => {
-
-  const dummy_recipe = {
-    key: ' ',
-    name: 'No',
-    timeToPrepare: '',
-    description: '',
-    materials: [
-      {
-        ingredient: '',
-        amount: '',
-      },
-    ],
-  };
   const [recipe, setRecipe] = useState('');
   const [keywords, setKeywords] = useState([]);
 
