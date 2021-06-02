@@ -6,12 +6,23 @@ import RecipeService from '../services/RecipeService';
 import KeywordsService from '../services/KeywordsService';
 import RecipeKeywords from '../components/RecipeDetail/RecipeKeywords';
 import RecipeInstructions from '../components/RecipeDetail/RecipeInstructions';
+import ReactStars from "react-rating-stars-component";
 
 const ShowRecipe = ({match}) => {
   const [recipe, setRecipe] = useState('');
   const [keywords, setKeywords] = useState([]);
  
-
+  const RatingStars = {
+    size: 35,
+    count: 5,
+    isHalf: true,
+    value: 4,
+    color: "grey",
+    activeColor: "yellow",
+    onChange: newValue => {
+      console.log(newValue)
+    }
+  };
 
 
   const getCurrentRecipeHandler = useCallback(async (recipeId) => {
@@ -45,11 +56,7 @@ const ShowRecipe = ({match}) => {
             <Col className="mx-3">
               <h2>{recipe.name}</h2>
               <div>
-                <span className="fa fa-star checked"></span>
-                <span className="fa fa-star checked"></span>
-                <span className="fa fa-star checked"></span>
-                <span className="fa fa-star checked"></span>
-                <span className="fa fa-star unchecked"></span>
+              <ReactStars {...RatingStars} />
                 <span> 666 reviews</span>
               </div>
               <p className="my-4">{recipe.description}</p>

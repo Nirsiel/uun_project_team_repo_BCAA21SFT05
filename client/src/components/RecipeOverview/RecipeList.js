@@ -16,7 +16,6 @@ const RecipeList = (props) => {
         keywords={recipe.keywords}
     />;
   });
-
   return (
       <Row className="justify-content-around pb-4">
         {recipeCards}
