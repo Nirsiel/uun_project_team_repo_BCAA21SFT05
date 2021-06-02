@@ -21,7 +21,6 @@ const getAllRecipes = async (req, res) => {
 
 const getLimitedRecipes = async (req, res) => {
     const limit = parseInt(req.params.limit);
-    console.log("getLimitedRecipes limit: "+limit);
     let result;
 
     try{

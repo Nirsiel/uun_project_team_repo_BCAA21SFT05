@@ -12,7 +12,6 @@ export default class RecipeService {
     return result.data;
   }
 
-
   static async getLimitedRecipes(limit) {
     const result = await axios.get(`${API_URL}/recipes/limit/${limit}`);
     return result.data;

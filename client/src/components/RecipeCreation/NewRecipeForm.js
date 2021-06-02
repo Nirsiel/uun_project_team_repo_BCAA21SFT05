@@ -10,9 +10,20 @@ const NewRecipeForm = (props) => {
       event.preventDefault();
       event.stopPropagation();
     }
-
+    console.log(test[1].props.checked);
     setValidated(true);
   };
+
+  const test = props.items.map((keyword) => {
+      return <Form.Check
+          value={keyword._id}
+          type="checkbox"
+          className="my-1 checkbox"
+          checked={true}
+          inline
+          label={keyword.value}
+      />;
+    })
 
   return (
       <Form noValidate validated={validated}
@@ -42,7 +53,7 @@ const NewRecipeForm = (props) => {
         </Form.Group>
 
         <Form.Group controlId="create-recipe-form4">
-
+          {test}
         </Form.Group>
 
         <Button className="mt-4" variant="primary" type="submit">

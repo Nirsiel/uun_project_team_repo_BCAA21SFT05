@@ -1,68 +1,59 @@
 import {Button, Form, Container, Row, Col} from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import React from 'react';
+import React, {useCallback, useEffect, useRef, useState} from 'react';
+import inputValidator from '../hooks/input-validator';
+import KeywordsService from '../services/KeywordsService';
+import NewRecipeForm from '../components/RecipeCreation/NewRecipeForm';
 
 const CreateRecipe = () => {
+  const [keywords, setKeywords] = useState([]);
+
+  const GetallKeywordHandler = useCallback(async () => {
+    let data = await KeywordsService.getAllKeywords();
+    setKeywords((prevState => {
+      return [...prevState, ...data.results];
+    }));
+  }, []);
+
+  useEffect(() => {
+    GetallKeywordHandler();
+  }, [GetallKeywordHandler]);
+
+  // const recipeNameRef = useRef();
+  // const {
+  //   value: recipeName,
+  //   hasError: recipeError,
+  //   valueChangeHandler: recipeNameChangeHandler,
+  //   inputBlurHandler: recipeBlurChangeHandler,
+  // } = inputValidator(value => value.trim() !== '' );
+
+  // const {
+  //   value: recipeName,
+  //   hasError: recipeError,
+  //   valueChangeHandler: recipeNameChangeHandler,
+  //   inputBlurHandler: recipeBlurChangeHandler,
+  // } = inputValidator(value => value.trim() !== '' );
+
+  // const {
+  //   value: recipeDescription,
+  //   hasError: descriptionError,
+  //   valueChangeHandler: recipeDescriptionChangeHandler,
+  //   inputBlurHandler: descriptionBlurChangeHandler,
+  // } = inputValidator(value => value.trim() !== '' );
+
+  // console.log("Recipe error "+recipeError);
+
+  if (!keywords) {
+    return <div>Loading keywords...</div>;
+  }
+
+//value={recipeName} onChange={recipeNameChangeHandler} onBlur={recipeBlurChangeHandler}
   return (
       <header className="p-5">
         <Container>
           <Row>
             <Col md={6}>
-              <Form>
-                <Form.Group controlId="create-recipe-form1">
-                  <Form.Label>Recipe name</Form.Label>
-                  <Form.Control type="text" placeholder="Grilled chicken"/>
-                </Form.Group>
-                <Form.Group controlId="create-recipe-form2">
-                  <Form.Label>Time To Prepare</Form.Label>
-                  <Form.Control type="number" placeholder="min"/>
-                </Form.Group>
-                <Form.Group controlId="create-recipe-form4">
-                  <Form.Label>Description</Form.Label>
-                  <Form.Control min="0" max="100" as="textarea" rows={3}/>
-                </Form.Group>
-                <Form.Group controlId="create-recipe-form4">
-                  <Row id="test-render">
-                    <Col>
-                      <Form.Label>Ingredient</Form.Label>
-                      <Form.Control type="text"/>
-                    </Col>
-                    <Col>
-                      <Form.Label>Amount</Form.Label>
-                      <Form.Control type="text"/>
-                    </Col>
-                  </Row>
-                  <Button className="mt-1" variant="flat" type="button">
-                    Add more
-                  </Button>
-                </Form.Group>
-
-                <Form.Group controlId="create-recipe-form4">
-                  <Form.Check
-                      type="checkbox"
-                      className="checkbox"
-                      inline
-                      label="Fast"
-                  />
-                  <Form.Check
-                      type="checkbox"
-                      className="checkbox"
-                      inline
-                      label="Easy"
-
-                  />
-                  <Form.Check
-                      type="checkbox"
-                      className="checkbox"
-                      inline
-                      label="Idk"
-                  />
-                </Form.Group>
-
-                <Button className="mt-4" variant="primary" type="submit">
-                  Submit
-                </Button>
-              </Form>
+              <NewRecipeForm items={keywords}/>
             </Col>
             <Col md={6}>
               Tu bude preview receptu
