@@ -23,6 +23,13 @@ header {
   background-color:rgba(207, 177, 152, 0.6)
 }
 
+.strong {
+  color: rgba(231, 105, 66, 1) !important;
+  font-weight: bold;
+  text-transform: capitalize;
+
+}
+
 article {
   background-color: #f4f7fa;
 }

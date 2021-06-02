@@ -5,10 +5,14 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import RecipeService from '../services/RecipeService';
 import KeywordsService from '../services/KeywordsService';
 import RecipeKeywords from '../components/RecipeDetail/RecipeKeywords';
+import RecipeInstructions from '../components/RecipeDetail/RecipeInstructions';
 
 const ShowRecipe = ({match}) => {
   const [recipe, setRecipe] = useState('');
   const [keywords, setKeywords] = useState([]);
+ 
+
+
 
   const getCurrentRecipeHandler = useCallback(async (recipeId) => {
     let recipeData = await RecipeService.getRecipeById(recipeId);
@@ -18,13 +22,15 @@ const ShowRecipe = ({match}) => {
     setKeywords(keywordsData.results);
   }, []);
 
+
   useEffect(() => {
     getCurrentRecipeHandler(match.params.recipeId);
   }, [getCurrentRecipeHandler]);
 
   if (!recipe) {
     return <div>Loading...</div>;
-  }
+  }   
+  let instructions = recipe.instructions.split('\n');
   return (
       <section className="pt-5">
         <Container>
@@ -61,7 +67,8 @@ const ShowRecipe = ({match}) => {
                   {recipe.materials.map((material) => {
                     return (
                         <li className="ingredient-list-li clearfix">
-                          <p>{material.ingredient}: {material.amount}</p>
+                          <p className="strong">{material.ingredient}:</p>
+                          <p className="pl-2">{material.amount}</p>
                         </li>
                     );
                   })}
@@ -72,19 +79,19 @@ const ShowRecipe = ({match}) => {
                   <li className="pb-2">
                     <h3>Cooking instructions</h3>
                   </li>
-
-                  <li>
-                    <div className="clearfix">
+                      <RecipeInstructions items={instructions}/>
+                  {/* <li> */}
+                    {/* <div className="clearfix"> */}
                       {/*<h3 className="float-left p-1 pr-3">1.</h3>*/}
-                      <p>
-                        {recipe.instructions}
-                      </p>
-                    </div>
-                    <img className="mx-auto"
+                      {/* <p> */}
+                        {/* {recipe.instructions} */}
+                      {/* </p> */}
+                    {/* </div> */}
+                    {/* <img className="mx-auto"
                          src="https://static.libertyprim.com/files/varietes/concombre-hollandais-large.jpg?1569524167"
                          width="100%" height="auto" alt="Cucumber"/>
                     <hr/>
-                  </li>
+                  </li> */}
                 </ul>
               </Col>
             </Row>
