@@ -3,6 +3,9 @@ import {Button, Form, Container, Row, Carousel} from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import RecipeList from '../components/RecipeOverview/RecipeList';
 import RecipeService from '../services/RecipeService';
+import MainCarouselItem1 from '../images/carousel-item-1.jpg';
+import MainCarouselItem2 from '../images/carousel-item-2.jpg';
+import MainCarouselItem3 from '../images/carousel-item-3.jpg';
 
 const Main = () => {
 
@@ -40,21 +43,21 @@ const Main = () => {
             <Carousel.Item className="c-item">
               <img
                   className="d-block w-100 c-image"
-                  src="https://www.kudyznudy.cz/files/20/205481aa-f242-4859-b697-ed334069ec2f.jpg?v=20200829103738"
+                  src={MainCarouselItem1}
                   alt="First slide"
               />
             </Carousel.Item>
             <Carousel.Item className="c-item">
               <img
                   className="d-block w-100 c-image"
-                  src="https://previews.123rf.com/images/nd3000/nd30001902/nd3000190200553/116721365-group-of-friends-having-a-barbecue-and-grill-party-in-nature.jpg"
+                  src={MainCarouselItem2}
                   alt="Second slide"
               />
             </Carousel.Item>
             <Carousel.Item className="c-item">
               <img
                   className="d-block w-100 c-image"
-                  src="https://previews.123rf.com/images/dar1930/dar19301307/dar1930130700287/21179555-summer-grill-party.jpg"
+                  src={MainCarouselItem3}
                   alt="Third slide"
               />
             </Carousel.Item>
