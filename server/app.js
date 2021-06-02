@@ -5,6 +5,7 @@ const {port, db_connection} = require("./config.js");
 const keywordsRoute = require("./routes/keywords-route");
 const materialsRoute = require("./routes/materials-route");
 const recipesRoute = require("./routes/recipes-route");
+const ratingRoute = require("./routes/rating-route");
 
 //config
 const app = express();
@@ -21,6 +22,7 @@ mongoose
 app.use("/keywords", keywordsRoute);
 app.use("/materials", materialsRoute);
 app.use("/recipes", recipesRoute);
+app.use("/rating", ratingRoute);
 
 
 //server start

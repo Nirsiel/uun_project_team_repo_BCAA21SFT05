@@ -47,9 +47,7 @@ const addNewRating = async (req, res) => {
     value: 0,
     count: 0
   });
-
   let result;
-
   try {
     result = await newRating.save();
     res.status(201).json({valid: true, result});
@@ -68,7 +66,7 @@ const addNewRating = async (req, res) => {
 const editRating = async (req, res) => {
   const ratingID = req.params.id;
   const {
-    value, count
+    value
   } = req.body;
   let updatedRating;
 
@@ -77,7 +75,7 @@ const editRating = async (req, res) => {
   } catch (exception) {
     res.status(500).json({valid: false, exception});
   }
-  updatedRating.value = ((updatedRating.value * updatedRating.count) + value) / updatedRating.count + 1
+  updatedRating.value = ((updatedRating.value * updatedRating.count) + value) / (updatedRating.count + 1);
   updatedRating.count += 1;
 
   try {

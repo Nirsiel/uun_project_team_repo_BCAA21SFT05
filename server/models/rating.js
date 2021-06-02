@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
  * @type {mongoose.Schema}
  */
 const ratingSchema = mongoose.Schema({
-  value: {type: Number, required: true, min: 1, max: 5},
+  value: {type: Number, required: true, min: 0, max: 5},
   count: {type: Number, required: true},
 });
 
