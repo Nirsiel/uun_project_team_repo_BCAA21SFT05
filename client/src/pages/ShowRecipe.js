@@ -12,7 +12,7 @@ import {Link} from 'react-router-dom';
 const ShowRecipe = ({match}) => {
   const [recipe, setRecipe] = useState('');
   const [keywords, setKeywords] = useState([]);
- 
+
   const RatingStars = {
     size: 35,
     count: 5,
@@ -41,7 +41,7 @@ const ShowRecipe = ({match}) => {
 
   if (!recipe) {
     return <div>Loading...</div>;
-  }   
+  }
   let instructions = recipe.instructions.split('\n');
 
   return (
@@ -77,7 +77,6 @@ const ShowRecipe = ({match}) => {
                     return (
                         <li className="ingredient-list-li clearfix">
                           <p className="strong">{material.ingredient}:</p>
-                          <p className="pl-2">{material.amount}</p>
                         </li>
                     );
                   })}

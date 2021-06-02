@@ -12,8 +12,7 @@ const recipeSchema = mongoose.Schema({
   timeToPrepare: {type: String, required: true},
   materials: [
     {
-      ingredient: {type: String, required: true},
-      amount: {type: String, required: false},
+      ingredient: {type: String, required: true}
     }],
   rating: {type: mongoose.Types.ObjectId, required: false, ref: 'Rating'},
   keywords: [{type: mongoose.Types.ObjectId, required: false, ref: 'Keyword'}],
