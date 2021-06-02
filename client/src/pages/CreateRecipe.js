@@ -1,14 +1,14 @@
-import {Button, Form, Container, Row, Col} from 'react-bootstrap';
+import {Container, Row, Col} from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import React, {useCallback, useEffect, useRef, useState} from 'react';
-import inputValidator from '../hooks/input-validator';
+import React, {useCallback, useEffect, useState} from 'react';
 import KeywordsService from '../services/KeywordsService';
 import NewRecipeForm from '../components/RecipeCreation/NewRecipeForm';
+import RecipeService from '../services/RecipeService';
 
 const CreateRecipe = () => {
   const [keywords, setKeywords] = useState([]);
 
-  const GetallKeywordHandler = useCallback(async () => {
+  const getAllKeywordHandler = useCallback(async () => {
     let data = await KeywordsService.getAllKeywords();
     setKeywords((prevState => {
       return [...prevState, ...data.results];
@@ -16,32 +16,19 @@ const CreateRecipe = () => {
   }, []);
 
   useEffect(() => {
-    GetallKeywordHandler();
-  }, [GetallKeywordHandler]);
+    getAllKeywordHandler();
+  }, [getAllKeywordHandler]);
 
-  // const recipeNameRef = useRef();
-  // const {
-  //   value: recipeName,
-  //   hasError: recipeError,
-  //   valueChangeHandler: recipeNameChangeHandler,
-  //   inputBlurHandler: recipeBlurChangeHandler,
-  // } = inputValidator(value => value.trim() !== '' );
-
-  // const {
-  //   value: recipeName,
-  //   hasError: recipeError,
-  //   valueChangeHandler: recipeNameChangeHandler,
-  //   inputBlurHandler: recipeBlurChangeHandler,
-  // } = inputValidator(value => value.trim() !== '' );
-
-  // const {
-  //   value: recipeDescription,
-  //   hasError: descriptionError,
-  //   valueChangeHandler: recipeDescriptionChangeHandler,
-  //   inputBlurHandler: descriptionBlurChangeHandler,
-  // } = inputValidator(value => value.trim() !== '' );
-
-  // console.log("Recipe error "+recipeError);
+  const onCreateNewRecipeHandler = async (newRecipeData) => {
+    const rating = '60b7bb7dd8c23e5550415590';
+    const recipeData = {
+      ...newRecipeData,
+      rating: rating,
+    };
+    console.log(recipeData);
+    const result = await RecipeService.addNewRecipe(recipeData);
+    console.log(result);
+  };
 
   if (!keywords) {
     return <div>Loading keywords...</div>;
@@ -53,7 +40,7 @@ const CreateRecipe = () => {
         <Container>
           <Row>
             <Col md={6}>
-              <NewRecipeForm items={keywords}/>
+              <NewRecipeForm items={keywords} onCreateNewRecipe={onCreateNewRecipeHandler}/>
             </Col>
             <Col md={6}>
               Tu bude preview receptu
