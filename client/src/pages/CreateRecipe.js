@@ -27,11 +27,9 @@ const CreateRecipe = () => {
       rating: rating.result._id,
     };
     const result = await RecipeService.addNewRecipe(recipeData);
-    //console.log(result.valid);
-    if (result.valid == true) {
-      return  alert("Recept pridaný")
+    if (result.valid === true) {
+      return alert('Recept pridaný');
     }
-
   };
 
   if (!keywords) {
@@ -42,9 +40,10 @@ const CreateRecipe = () => {
   return (
       <header className="p-5">
         <Container>
-        <Row className="justify-content-around">
+          <Row className="justify-content-around">
             <Col md={6}>
-              <NewRecipeForm items={keywords} onCreateNewRecipe={onCreateNewRecipeHandler}/>
+              <NewRecipeForm items={keywords}
+                             onCreateNewRecipe={onCreateNewRecipeHandler}/>
             </Col>
           </Row>
         </Container>

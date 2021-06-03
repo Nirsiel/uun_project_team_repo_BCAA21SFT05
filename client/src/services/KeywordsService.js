@@ -15,11 +15,11 @@ export default class KeywordsService {
   static async getKeywordsByIds(keywordsIds) {
     let data = {
       'values': [
-          ...keywordsIds,
+        ...keywordsIds,
       ],
     };
     const result = await axios.post(`${API_URL}/keywords/byIds`, data);
-    console.log("getKeywordsByIds result: " + result.data);
+    console.log('getKeywordsByIds result: ' + result.data);
     return result.data;
   }
 

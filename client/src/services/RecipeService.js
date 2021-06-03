@@ -27,8 +27,8 @@ export default class RecipeService {
     return result.data;
   }
 
-  static async editRecipe(updatedRecipe) {
-    const result = await axios.patch(`${API_URL}/recipes`, updatedRecipe);
+  static async editRecipe(recipeId, updatedRecipe) {
+    const result = await axios.patch(`${API_URL}/recipes/${recipeId}`, updatedRecipe);
     return result.data;
   }
 

@@ -11,10 +11,10 @@ import {Link} from 'react-router-dom';
 const Main = () => {
   const [allRecipes, setAllRecipes] = useState([]);
   const [recipes, setRecipes] = useState([]);
-  const [searchForm, setSearchForm] = useState('')
+  const [searchForm, setSearchForm] = useState('');
 
   const loadRecipesHandler = useCallback(async () => {
-    let data = await RecipeService.getLimitedRecipes(6);
+    let data = await RecipeService.getLimitedRecipes(3);
     setRecipes((prevState) => {
       return [...prevState, ...data.results];
     });
@@ -31,42 +31,45 @@ const Main = () => {
     let data = await RecipeService.getNextRecipes(recipes.length, 3);
     setRecipes((prevState) => {
       return [...prevState, ...data.results];
-    })
-  }
+    });
+  };
 
   useEffect(() => {
     loadAllRecipesHandler();
     loadRecipesHandler();
   }, [loadAllRecipesHandler]);
 
-
   return (
       <div className="Main">
         <Row className="carousel-bug-fix">
           <Form className="search-form form-inline col-10 mx-auto p-4">
-            <Form.Control className="rounded-0 col-12" type="search" id="search" placeholder="Search" onChange={(event) => {setSearchForm(event.target.value)}}/>
+            <Form.Control className="rounded-0 col-12" type="search" id="search"
+                          placeholder="Search" onChange={(event) => {
+              setSearchForm(event.target.value);
+            }}/>
             {/* <Button className="rounded-0 search-button" type="submit">
               Search
             </Button> */}
 
           </Form>
           <Row className="search">
-          {allRecipes.filter((val) => {
-                if (searchForm !== "") {
-                 return val.name.toLowerCase().includes(searchForm.toLowerCase())
-                  // return val
-                }
-              }).map((val) => {
-                return (
-                <div className="col-10 p-3">
+            {allRecipes.filter((val) => {
+              if (searchForm !== '') {
+                return val.name.toLowerCase().includes(searchForm.toLowerCase());
+                // return val
+              }
+            }).map((val) => {
+              return (
+                  <div className="col-10 p-3">
                     <Link className="p-2" to={`/show-recipe/${val._id}`}>
                       {/* <Link className="link-clearing text-white" to={`/show-recipe/`}></Link> */}
-                      <img className="float-left" width="40px" src="https://d1e3z2jco40k3v.cloudfront.net/-/media/mccormick-us/recipes/grill-mates/r/800/roasted-garlic-grilled-vegetables.jpg"/>
-                      <p className="float-left p-2">{val.name }</p>
+                      <img className="float-left" width="40px"
+                           src="https://d1e3z2jco40k3v.cloudfront.net/-/media/mccormick-us/recipes/grill-mates/r/800/roasted-garlic-grilled-vegetables.jpg"/>
+                      <p className="float-left p-2">{val.name}</p>
                     </Link>
-                </div>
-                )
-              })}
+                  </div>
+              );
+            })}
           </Row>
           <Carousel className="dark-mood">
             <Carousel.Item className="c-item">
@@ -112,7 +115,8 @@ const Main = () => {
             </div>
             {<RecipeList items={recipes}/>}
             <div className="text-center">
-              <Button onClick={loadNextRecipesHandler} className="rounded-0 search-button"
+              <Button onClick={loadNextRecipesHandler}
+                      className="rounded-0 search-button"
                       type="button">
                 Load more
               </Button>

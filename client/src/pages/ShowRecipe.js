@@ -1,10 +1,10 @@
 /* eslint-disable jsx-a11y/img-redundant-alt */
 import React, {useCallback, useEffect, useState} from 'react';
-import {Col, Container, Image, Row} from 'react-bootstrap';
+import {Button, Col, Container, Image, Row} from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import RecipeService from '../services/RecipeService';
 import KeywordsService from '../services/KeywordsService';
-import RatingService from "../services/RatingService";
+import RatingService from '../services/RatingService';
 import RecipeKeywords from '../components/RecipeDetail/RecipeKeywords';
 import RecipeInstructions from '../components/RecipeDetail/RecipeInstructions';
 import ReactStars from 'react-rating-stars-component';
@@ -15,7 +15,11 @@ const ShowRecipe = ({match}) => {
   const [keywords, setKeywords] = useState([]);
   const [rating, setRating] = useState([]);
 
-
+  const deleteRecipeHandler = async () => {
+    let result = RecipeService.deleteRecipe(recipe._id);
+    console.log(result);
+    alert('Smazal jsi recept: ' + recipe.name);
+  };
   const getCurrentRecipeHandler = useCallback(async (recipeId) => {
     let recipeData = await RecipeService.getRecipeById(recipeId);
     setRecipe(recipeData.result);
@@ -23,11 +27,9 @@ const ShowRecipe = ({match}) => {
         recipeData.result.keywords);
     setKeywords(keywordsData.results);
     let ratingData = await RatingService.getRatingById(
-      recipeData.result.rating);
+        recipeData.result.rating);
     setRating(ratingData.result);
   }, []);
-
-
 
   useEffect(() => {
     getCurrentRecipeHandler(match.params.recipeId);
@@ -35,23 +37,18 @@ const ShowRecipe = ({match}) => {
 
   const updateCurrentRating = async (rating, value) => {
     let updateRating = await RatingService.updateRatingById(
-      rating._id, value)
+        rating._id, value);
     console.log(updateRating);
-  }
+  };
 
- 
-
-  
   if (!rating.value) {
     return <div>Loading...</div>;
   }
   let instructions = recipe.instructions.split('\n');
 
   let activeStarValue = Math.floor(rating.value);
-  
-  
 
-  console.log(activeStarValue)
+  console.log(activeStarValue);
   const RatingStars = {
     size: 35,
     count: 5,
@@ -60,8 +57,8 @@ const ShowRecipe = ({match}) => {
     color: 'grey',
     activeColor: 'yellow',
     onChange: newValue => {
-      console.log(newValue)
-      updateCurrentRating(rating, newValue)
+      console.log(newValue);
+      updateCurrentRating(rating, newValue);
     },
   };
 
@@ -126,8 +123,18 @@ const ShowRecipe = ({match}) => {
                 </ul>
               </Col>
             </Row>
-            <Link className="link-clearing fade-link float-right m-2"
-                  to={`/update-recipe/${recipe._id}`}>Update recipe</Link>
+            <Link className="inline link-clearing fade-link float-right m-2"
+                  to={`/update-recipe/${recipe._id}`}>
+              <Button variant="light">
+                Update Recipe
+              </Button>
+            </Link>
+            <Link className="inline link-clearing fade-link float-right m-2"
+                  to={'/'}>
+              <Button onClick={deleteRecipeHandler} variant="light">
+                Delete Recipe
+              </Button>
+            </Link>
           </Container>
         </article>
       </section>

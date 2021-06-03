@@ -21,18 +21,29 @@ const UpdateRecipe = ({match}) => {
     getCurrentRecipeHandler(match.params.recipeId);
   }, [getCurrentRecipeHandler]);
 
+  const onUpdateRecipeHandler = async (updatedRecipeData) => {
+      let recipeData = {
+        ...updatedRecipeData,
+        rating: recipe.rating
+      }
+    const result = await RecipeService.editRecipe(recipe._id, recipeData);
+    if (result.valid === true) {
+      return alert('Recept upravený');
+    }
+  }
+
+
   if (!recipe) {
     return <div>Loading...</div>;
   }
 
-  console.log(recipe);
   return (
 
       <header className="p-5 bg-info">
         <Container>
           <Row className="justify-content-around">
             <Col md={6}>
-              <NewRecipeForm items={keywords}/>
+              <NewRecipeForm items={keywords} prefetch={recipe} onCreateNewRecipe={onUpdateRecipeHandler}/>
             </Col>
           </Row>
         </Container>

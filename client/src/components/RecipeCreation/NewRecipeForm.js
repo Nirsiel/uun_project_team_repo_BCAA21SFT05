@@ -1,5 +1,5 @@
 import {Button, Form} from 'react-bootstrap';
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 
 let keywords = [];
 const NewRecipeForm = (props) => {
@@ -79,16 +79,35 @@ const NewRecipeForm = (props) => {
     });
     event.preventDefault();
   };
+
+  useEffect(() => {
+    if (props.prefetch) {
+      setFormState((prevState => {
+        return {
+          ...prevState,
+          name: props.prefetch.name,
+          timeToPrepare: props.prefetch.timeToPrepare,
+          description: props.prefetch.description,
+          instructions: props.prefetch.instructions,
+          ingredients: props.prefetch.materials.join('\n'),
+        };
+      }));
+      keywords = props.keywords;
+    }
+  }, [props.keywords, props.prefetch]);
+
   const keywordCheckboxes = props.items.map((keyword) => {
 
-    return <Form.Check
-        onChange={changeKeywordsHandler}
-        value={keyword._id}
-        type="checkbox"
-        className="my-1 checkbox"
-        inline
-        label={keyword.value}
-    />;
+    return (
+        <Form.Check
+            key={keyword._id}
+            onChange={changeKeywordsHandler}
+            value={keyword._id}
+            type="checkbox"
+            className="my-1 checkbox"
+            inline
+            label={keyword.value}
+        />);
   });
 
   return (

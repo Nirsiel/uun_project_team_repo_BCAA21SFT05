@@ -13,7 +13,6 @@ import {BrowserRouter, Switch, Route} from 'react-router-dom';
 
 import React from 'react';
 
-
 const App = () => {
   return (
       <BrowserRouter>
@@ -22,7 +21,8 @@ const App = () => {
         <Switch>
           <Route exact path="/" component={Main}/>
           <Route exact path="/create-recipe" component={CreateRecipe}/>
-          <Route exact path="/update-recipe/:recipeId" component={UpdateRecipe}/>
+          <Route exact path="/update-recipe/:recipeId"
+                 component={UpdateRecipe}/>
           <Route exact path="/show-recipe/:recipeId" component={ShowRecipe}/>
         </Switch>
         <Footer/>
