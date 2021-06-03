@@ -1,10 +1,6 @@
 import React from 'react';
-import {Navbar, Nav, NavDropdown} from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {useCallback, useEffect, useState} from 'react';
-import {Container, Row, Col, Image} from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
 
 const RecipeInstructions = (props) => {
   let i = 0

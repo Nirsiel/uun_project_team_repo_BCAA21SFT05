@@ -1,12 +1,12 @@
 /* eslint-disable jsx-a11y/img-redundant-alt */
 import React, {useCallback, useEffect, useState} from 'react';
-import {Container, Row, Col, Image} from 'react-bootstrap';
+import {Col, Container, Image, Row} from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import RecipeService from '../services/RecipeService';
 import KeywordsService from '../services/KeywordsService';
 import RecipeKeywords from '../components/RecipeDetail/RecipeKeywords';
 import RecipeInstructions from '../components/RecipeDetail/RecipeInstructions';
-import ReactStars from "react-rating-stars-component";
+import ReactStars from 'react-rating-stars-component';
 import {Link} from 'react-router-dom';
 
 const ShowRecipe = ({match}) => {
@@ -18,13 +18,12 @@ const ShowRecipe = ({match}) => {
     count: 5,
     isHalf: true,
     value: 4,
-    color: "grey",
-    activeColor: "yellow",
+    color: 'grey',
+    activeColor: 'yellow',
     onChange: newValue => {
-      console.log(newValue)
-    }
+      console.log(newValue);
+    },
   };
-
 
   const getCurrentRecipeHandler = useCallback(async (recipeId) => {
     let recipeData = await RecipeService.getRecipeById(recipeId);
@@ -33,7 +32,6 @@ const ShowRecipe = ({match}) => {
         recipeData.result.keywords);
     setKeywords(keywordsData.results);
   }, []);
-
 
   useEffect(() => {
     getCurrentRecipeHandler(match.params.recipeId);
@@ -58,7 +56,7 @@ const ShowRecipe = ({match}) => {
             <Col className="mx-3">
               <h2>{recipe.name}</h2>
               <div>
-              <ReactStars {...RatingStars} />
+                <ReactStars {...RatingStars} />
                 <span> 666 reviews</span>
               </div>
               <p className="my-4">{recipe.description}</p>
@@ -74,11 +72,11 @@ const ShowRecipe = ({match}) => {
                 <ul className="p-3">
                   <li className="pb-2"><h3>Ingredients</h3></li>
                   {recipe.materials.map((material) => {
-                      let materialName = material.ingredient
-                      let materialArray = materialName.split(':')
+                    let materialArray = material.split(':');
                     return (
                         <li className="ingredient-list-li clearfix">
-                          <p className="strong pr-1">{materialArray[0]}:</p><p>{materialArray[1]}</p>
+                          <p className="strong pr-1">{materialArray[0]}:</p>
+                          <p>{materialArray[1]}</p>
                         </li>
                     );
                   })}
@@ -89,15 +87,15 @@ const ShowRecipe = ({match}) => {
                   <li className="pb-2">
                     <h3>Cooking instructions</h3>
                   </li>
-                      <RecipeInstructions items={instructions}/>
+                  <RecipeInstructions items={instructions}/>
                   {/* <li> */}
-                    {/* <div className="clearfix"> */}
-                      {/*<h3 className="float-left p-1 pr-3">1.</h3>*/}
-                      {/* <p> */}
-                        {/* {recipe.instructions} */}
-                      {/* </p> */}
-                    {/* </div> */}
-                    {/* <img className="mx-auto"
+                  {/* <div className="clearfix"> */}
+                  {/*<h3 className="float-left p-1 pr-3">1.</h3>*/}
+                  {/* <p> */}
+                  {/* {recipe.instructions} */}
+                  {/* </p> */}
+                  {/* </div> */}
+                  {/* <img className="mx-auto"
                          src="https://static.libertyprim.com/files/varietes/concombre-hollandais-large.jpg?1569524167"
                          width="100%" height="auto" alt="Cucumber"/>
                     <hr/>
@@ -105,7 +103,8 @@ const ShowRecipe = ({match}) => {
                 </ul>
               </Col>
             </Row>
-            <Link className="link-clearing fade-link float-right m-2" to={`/update-recipe/${recipe._id}`}>Update recipe</Link>
+            <Link className="link-clearing fade-link float-right m-2"
+                  to={`/update-recipe/${recipe._id}`}>Update recipe</Link>
           </Container>
         </article>
       </section>

@@ -14,7 +14,7 @@ const Main = () => {
   const [searchForm, setSearchForm] = useState('')
 
   const loadRecipesHandler = useCallback(async () => {
-    let data = await RecipeService.getLimitedRecipes(3);
+    let data = await RecipeService.getLimitedRecipes(6);
     setRecipes((prevState) => {
       return [...prevState, ...data.results];
     });
@@ -36,8 +36,7 @@ const Main = () => {
 
   useEffect(() => {
     loadAllRecipesHandler();
-    loadRecipesHandler();
-  }, [loadRecipesHandler]);
+  }, [loadAllRecipesHandler]);
 
 
   return (
@@ -52,7 +51,7 @@ const Main = () => {
           </Form>
           <Row className="search">
           {allRecipes.filter((val) => {
-                if (searchForm != "") {
+                if (searchForm !== "") {
                  return val.name.toLowerCase().includes(searchForm.toLowerCase())
                   // return val
                 }

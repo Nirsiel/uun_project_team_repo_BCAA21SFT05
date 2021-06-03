@@ -49,23 +49,13 @@ const NewRecipeForm = (props) => {
   const formSubmissionHandler = (event) => {
     const form = event.currentTarget;
     if (form.checkValidity() === false) {
+      setValidated(false);
       event.preventDefault();
       event.stopPropagation();
-      // return;
     }
-    const split = formState.ingredients.replace(/\r\n/g, '\n').
+    const materials = formState.ingredients.replace(/\r\n/g, '\n').
         split('\n').
         filter(line => line);
-    //TODO: naparsovat z textu material array.
-    const materials = [...split];
-    // split.map((line) => {
-    //       return {
-    //         ingredient: line,
-    //       };
-    //     },
-    // );
-
-    console.log('materials: ' + materials);
 
     const newRecipeData = {
       name: formState.name,
@@ -76,8 +66,9 @@ const NewRecipeForm = (props) => {
       keywords: keywords,
     };
     console.log('newRecipeData: ' + newRecipeData);
-    // props.onCreateNewRecipe(newRecipeData);
+    props.onCreateNewRecipe(newRecipeData);
 
+    setValidated(true);
     keywords = [];
     setFormState({
       name: '',
@@ -87,8 +78,6 @@ const NewRecipeForm = (props) => {
       ingredients: '',
     });
     event.preventDefault();
-    setValidated(true);
-
   };
   const keywordCheckboxes = props.items.map((keyword) => {
 
