@@ -74,7 +74,7 @@ const getRecipeById = async (req, res) => {
  * @returns {Promise<void>}
  */
 const addNewRecipe = async (req, res) => {
-    const {name, description, instructions, timeToPrepare, rating, materials, keywords} = req.body;
+    const {name, description, instructions, timeToPrepare, picture, rating, materials, keywords} = req.body;
     console.log("materials:\n"+materials);
     const newRecipe = new Recipe({
         createdOn: new Date(),
@@ -83,6 +83,7 @@ const addNewRecipe = async (req, res) => {
         instructions: instructions,
         timeToPrepare: timeToPrepare,
         materials: materials,
+        picture: picture,
         rating: rating,
         keywords: keywords
     });

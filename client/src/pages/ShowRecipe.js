@@ -68,7 +68,7 @@ const ShowRecipe = ({match}) => {
           <Row className="pb-5">
             <Col>
               <Image className="recipe-profile-photo"
-                     src="https://d1e3z2jco40k3v.cloudfront.net/-/media/mccormick-us/recipes/grill-mates/r/800/roasted-garlic-grilled-vegetables.jpg"
+                     src={recipe.picture}
                      fluid/>
               <span className="cooking-time badge"> <i
                   className="far fa-clock"/> {recipe.timeToPrepare} min</span>

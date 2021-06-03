@@ -10,6 +10,7 @@ const NewRecipeForm = (props) => {
     description: '',
     instructions: '',
     ingredients: '',
+    picture: ''
   });
 
   const changeKeywordsHandler = (event) => {
@@ -45,6 +46,11 @@ const NewRecipeForm = (props) => {
       return {...prevState, ingredients: event.target.value};
     }));
   };
+  const pictureChangeHandler = (event) => {
+    setFormState((prevState => {
+      return {...prevState, picture: event.target.value};
+    }));
+  };
 
   const formSubmissionHandler = (event) => {
     const form = event.currentTarget;
@@ -64,6 +70,7 @@ const NewRecipeForm = (props) => {
       instructions: formState.instructions,
       materials: materials,
       keywords: keywords,
+      picture: formState.picture
     };
     console.log('newRecipeData: ' + newRecipeData);
     props.onCreateNewRecipe(newRecipeData);
@@ -76,6 +83,7 @@ const NewRecipeForm = (props) => {
       description: '',
       instructions: '',
       ingredients: '',
+      picture: ''
     });
     event.preventDefault();
   };
@@ -146,6 +154,12 @@ const NewRecipeForm = (props) => {
                         onChange={ingredientsChangeHandler} required
                         type="text"
                         as="textarea"/>
+        </Form.Group>
+        <Form.Group controlId="create-recipe-form4">
+          <Form.Label>Picture</Form.Label>
+          <Form.Control value={formState.picture}
+                        onChange={pictureChangeHandler} required
+                        type="text"/>
         </Form.Group>
 
         <Form.Group controlId="create-recipe-form4">
