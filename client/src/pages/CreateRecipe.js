@@ -20,25 +20,22 @@ const CreateRecipe = () => {
   }, [getAllKeywordHandler]);
 
   const onCreateNewRecipeHandler = async (newRecipeData) => {
-    const rating = '60b7bb7dd8c23e5550415590';
+    const rating = await RatingService.createNewRating();
     const recipeData = {
       ...newRecipeData,
-      rating: rating,
+      rating: rating.result._id,
     };
-    console.log(recipeData);
     const result = await RecipeService.addNewRecipe(recipeData);
     //console.log(result.valid);
     if (result.valid == true) {
       return  alert("Recept pridaný")
     }
-    
+
   };
 
   if (!keywords) {
     return <div>Loading keywords...</div>;
   }
-
-  
 
 //value={recipeName} onChange={recipeNameChangeHandler} onBlur={recipeBlurChangeHandler}
   return (

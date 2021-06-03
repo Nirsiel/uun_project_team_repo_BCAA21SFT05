@@ -36,6 +36,7 @@ const Main = () => {
 
   useEffect(() => {
     loadAllRecipesHandler();
+    loadRecipesHandler();
   }, [loadAllRecipesHandler]);
 
 

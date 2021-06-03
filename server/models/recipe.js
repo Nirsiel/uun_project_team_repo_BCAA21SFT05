@@ -10,6 +10,7 @@ const recipeSchema = mongoose.Schema({
   description: {type: String, required: false},
   instructions: {type: String, required: true},
   timeToPrepare: {type: String, required: true},
+  picture: {type: String, required: false},
   materials: [{type: String, required: true}],
   rating: {type: mongoose.Types.ObjectId, required: false, ref: 'Rating'},
   keywords: [{type: mongoose.Types.ObjectId, required: false, ref: 'Keyword'}],
