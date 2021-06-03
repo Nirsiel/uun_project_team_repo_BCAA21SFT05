@@ -44,8 +44,8 @@ const getRatingById = async (req, res) => {
 const addNewRating = async (req, res) => {
 
   const newRating = new Rating({
-    value: 0,
-    count: 0
+    value: 5,
+    count: 1
   });
   let result;
   try {
