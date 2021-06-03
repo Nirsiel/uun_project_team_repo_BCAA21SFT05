@@ -4,6 +4,7 @@ import {Col, Container, Image, Row} from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import RecipeService from '../services/RecipeService';
 import KeywordsService from '../services/KeywordsService';
+import RatingService from "../services/RatingService";
 import RecipeKeywords from '../components/RecipeDetail/RecipeKeywords';
 import RecipeInstructions from '../components/RecipeDetail/RecipeInstructions';
 import ReactStars from 'react-rating-stars-component';
@@ -12,18 +13,8 @@ import {Link} from 'react-router-dom';
 const ShowRecipe = ({match}) => {
   const [recipe, setRecipe] = useState('');
   const [keywords, setKeywords] = useState([]);
+  const [rating, setRating] = useState([]);
 
-  const RatingStars = {
-    size: 35,
-    count: 5,
-    isHalf: true,
-    value: 4,
-    color: 'grey',
-    activeColor: 'yellow',
-    onChange: newValue => {
-      console.log(newValue);
-    },
-  };
 
   const getCurrentRecipeHandler = useCallback(async (recipeId) => {
     let recipeData = await RecipeService.getRecipeById(recipeId);
@@ -31,16 +22,48 @@ const ShowRecipe = ({match}) => {
     let keywordsData = await KeywordsService.getKeywordsByIds(
         recipeData.result.keywords);
     setKeywords(keywordsData.results);
+    let ratingData = await RatingService.getRatingById(
+      recipeData.result.rating);
+    setRating(ratingData.result);
   }, []);
+
+
 
   useEffect(() => {
     getCurrentRecipeHandler(match.params.recipeId);
   }, [getCurrentRecipeHandler]);
 
-  if (!recipe) {
+  const updateCurrentRating = async (rating, value) => {
+    let updateRating = await RatingService.updateRatingById(
+      rating._id, value)
+    console.log(updateRating);
+  }
+
+ 
+
+  
+  if (!rating.value) {
     return <div>Loading...</div>;
   }
   let instructions = recipe.instructions.split('\n');
+
+  let activeStarValue = Math.floor(rating.value);
+  
+  
+
+  console.log(activeStarValue)
+  const RatingStars = {
+    size: 35,
+    count: 5,
+    isHalf: true,
+    value: activeStarValue,
+    color: 'grey',
+    activeColor: 'yellow',
+    onChange: newValue => {
+      console.log(newValue)
+      updateCurrentRating(rating, newValue)
+    },
+  };
 
   return (
       <section className="pt-5">
@@ -56,8 +79,8 @@ const ShowRecipe = ({match}) => {
             <Col className="mx-3">
               <h2>{recipe.name}</h2>
               <div>
-                <ReactStars {...RatingStars} />
-                <span> 666 reviews</span>
+                <ReactStars  {...RatingStars} />
+                <span> {rating.count} reviews</span>
               </div>
               <p className="my-4">{recipe.description}</p>
               <br/>

@@ -4,6 +4,7 @@ import React, {useCallback, useEffect, useState} from 'react';
 import KeywordsService from '../services/KeywordsService';
 import NewRecipeForm from '../components/RecipeCreation/NewRecipeForm';
 import RecipeService from '../services/RecipeService';
+import RatingService from '../services/RatingService';
 
 const CreateRecipe = () => {
   const [keywords, setKeywords] = useState([]);
