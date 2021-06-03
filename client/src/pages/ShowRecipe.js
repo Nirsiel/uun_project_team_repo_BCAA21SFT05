@@ -74,9 +74,11 @@ const ShowRecipe = ({match}) => {
                 <ul className="p-3">
                   <li className="pb-2"><h3>Ingredients</h3></li>
                   {recipe.materials.map((material) => {
+                      let materialName = material.ingredient
+                      let materialArray = materialName.split(':')
                     return (
                         <li className="ingredient-list-li clearfix">
-                          <p className="strong">{material.ingredient}:</p>
+                          <p className="strong pr-1">{materialArray[0]}:</p><p>{materialArray[1]}</p>
                         </li>
                     );
                   })}

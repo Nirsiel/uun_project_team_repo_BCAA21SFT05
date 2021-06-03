@@ -156,7 +156,7 @@ td {
 
 .ingredient-list-li {
   display: flex;
-  align-items: center;
+  align-items: start;
 }
 
 .ingredient-list-photo {
