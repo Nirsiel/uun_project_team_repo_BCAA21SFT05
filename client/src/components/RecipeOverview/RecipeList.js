@@ -12,6 +12,7 @@ const RecipeList = (props) => {
         description={recipe.description}
         instructions={recipe.instructions}
         timeToPrepare={recipe.timeToPrepare}
+        picture={recipe.picture}
         materials={recipe.materials}
         keywords={recipe.keywords}
     />;

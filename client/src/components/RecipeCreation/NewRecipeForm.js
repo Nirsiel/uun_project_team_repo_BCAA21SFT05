@@ -10,7 +10,7 @@ const NewRecipeForm = (props) => {
     description: '',
     instructions: '',
     ingredients: '',
-    picture: ''
+    picture: '',
   });
 
   const changeKeywordsHandler = (event) => {
@@ -70,9 +70,8 @@ const NewRecipeForm = (props) => {
       instructions: formState.instructions,
       materials: materials,
       keywords: keywords,
-      picture: formState.picture
+      picture: formState.picture,
     };
-    console.log('newRecipeData: ' + newRecipeData);
     props.onCreateNewRecipe(newRecipeData);
 
     setValidated(true);
@@ -83,7 +82,7 @@ const NewRecipeForm = (props) => {
       description: '',
       instructions: '',
       ingredients: '',
-      picture: ''
+      picture: '',
     });
     event.preventDefault();
   };
@@ -98,6 +97,7 @@ const NewRecipeForm = (props) => {
           description: props.prefetch.description,
           instructions: props.prefetch.instructions,
           ingredients: props.prefetch.materials.join('\n'),
+          picture: props.prefetch.picture,
         };
       }));
       keywords = props.keywords;
