@@ -9,13 +9,20 @@ import MainCarouselItem3 from '../images/carousel-item-3.jpg';
 import {Link} from 'react-router-dom';
 
 const Main = () => {
-
+  const [allRecipes, setAllRecipes] = useState([]);
   const [recipes, setRecipes] = useState([]);
   const [searchForm, setSearchForm] = useState('')
 
   const loadRecipesHandler = useCallback(async () => {
     let data = await RecipeService.getLimitedRecipes(3);
     setRecipes((prevState) => {
+      return [...prevState, ...data.results];
+    });
+  }, []);
+
+  const loadAllRecipesHandler = useCallback(async () => {
+    let data = await RecipeService.getAllRecipes();
+    setAllRecipes((prevState) => {
       return [...prevState, ...data.results];
     });
   }, []);
@@ -28,6 +35,7 @@ const Main = () => {
   }
 
   useEffect(() => {
+    loadAllRecipesHandler();
     loadRecipesHandler();
   }, [loadRecipesHandler]);
 
@@ -43,7 +51,7 @@ const Main = () => {
 
           </Form>
           <Row className="search">
-          {recipes.filter((val) => {
+          {allRecipes.filter((val) => {
                 if (searchForm != "") {
                  return val.name.toLowerCase().includes(searchForm.toLowerCase())
                   // return val
