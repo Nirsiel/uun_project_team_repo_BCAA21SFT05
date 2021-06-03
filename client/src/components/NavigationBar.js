@@ -11,13 +11,6 @@ const NavigationBar = () => {
           <Nav className="ml-auto">
             <Link className="link-clearing nav-link" to="/create-recipe">Create
               recipe</Link>
-            <NavDropdown title="Roles" id="basic-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">User</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">Editor</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Master</NavDropdown.Item>
-              <NavDropdown.Divider/>
-              <NavDropdown.Item href="#action/3.4">Support us</NavDropdown.Item>
-            </NavDropdown>
           </Nav>
         </Navbar>
       </div>
