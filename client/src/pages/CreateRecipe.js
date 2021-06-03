@@ -27,12 +27,18 @@ const CreateRecipe = () => {
     };
     console.log(recipeData);
     const result = await RecipeService.addNewRecipe(recipeData);
-    console.log(result);
+    //console.log(result.valid);
+    if (result.valid == true) {
+      return  alert("Recept pridaný")
+    }
+    
   };
 
   if (!keywords) {
     return <div>Loading keywords...</div>;
   }
+
+  
 
 //value={recipeName} onChange={recipeNameChangeHandler} onBlur={recipeBlurChangeHandler}
   return (
