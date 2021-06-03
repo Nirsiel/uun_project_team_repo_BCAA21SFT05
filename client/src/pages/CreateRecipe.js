@@ -38,12 +38,9 @@ const CreateRecipe = () => {
   return (
       <header className="p-5">
         <Container>
-          <Row>
+        <Row className="justify-content-around">
             <Col md={6}>
               <NewRecipeForm items={keywords} onCreateNewRecipe={onCreateNewRecipeHandler}/>
-            </Col>
-            <Col md={6}>
-              Tu bude preview receptu
             </Col>
           </Row>
         </Container>
