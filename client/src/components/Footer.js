@@ -10,31 +10,20 @@ const Footer = () => {
             <ul
                 className="list-group list-group-horizontal e mx-auto justify-content-center">
               <li className="px-3">
-                Ján Kučera
+                <a className="text-white" href="https://github.com/Pelleas27">Ján Kučera</a>
               </li>
               <li className="px-3">
-                Jan Novák
-              </li>
-              <li className="px-3">
-                <i className="fas fa-skull-crossbones"></i> Pavlík Roman
-              </li>
-              <li className="px-3">
-                Martin Haloda
-              </li>
-              <li className="px-3">
-                Radovan Procházka
+                <a className="text-white" href="https://github.com/Nirsiel">Jan Novák</a>
               </li>
             </ul>
           </section>
         </div>
 
         <div className="text-center p-3">
-          BCAA 005 © 2021 |
-          <a className="text-white"
-             href="https://unicornuniversity.net/"> Unicorn
-            Vysoká škola s.r.o.</a>
+          <a className="text-white" href="https://github.com/Nirsiel/uun_project_team_repo_BCAA21SFT05">GitHub</a> |
+          <a className="text-white" href="https://www.gnu.org/licenses/lgpl-3.0.en.html">LGPL v3</a>
         </div>
-      </footer>
+        </footer>
   );
 };
 
