@@ -8,14 +8,14 @@ const RecipeCard = (props) => {
   let trimmedText = arr.slice(0, 10).join(' ').concat('...');
   return (
       <Card style={{width: '18rem'}} className="mt-4">
-        <Card.Img variant="top"
+        <Card.Img className="card-image" variant="top"
                   src={props.picture}/>
-        <Card.Body>
+        <Card.Body className="d-flex flex-column justify-content-between">
           <Card.Title>{props.name}</Card.Title>
           <Card.Text className="pb-2">
             {props.description.length > 50 ? trimmedText : props.description}
           </Card.Text>
-          <Button><Link className="link-clearing text-white"
+          <Button className="show-recipe-btn"><Link className="link-clearing text-white"
                         to={`/show-recipe/${props.id}`}>Show
             me recipe</Link></Button>
         </Card.Body>

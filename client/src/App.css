@@ -212,3 +212,13 @@ td {
 .checkbox:checked {
   border: 2px solid black;
 }
+
+
+.show-recipe-btn {
+  width: 60%;
+}
+
+.card-image {
+  max-height: 190px;
+  background-size: inherit !important;
+}
