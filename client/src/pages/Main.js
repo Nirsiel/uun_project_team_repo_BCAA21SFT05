@@ -114,11 +114,11 @@ const Main = () => {
               </div>
             </div>
             {<RecipeList items={recipes}/>}
-            <div className="text-center">
+            <div className="text-center mt-4 mb-2">
               <Button onClick={loadNextRecipesHandler}
-                      className="rounded-0 search-button"
+                      className="load-button"
                       type="button">
-                Load more
+                More recipes
               </Button>
             </div>
 

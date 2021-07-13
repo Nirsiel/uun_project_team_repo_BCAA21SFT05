@@ -128,9 +128,25 @@ td {
   border: none !important;
 }
 
-.search-button {
+.load-button {
+  font-size: 18px !important;
+  padding: 10px 18px !important;
+  color: rgba(231, 105, 66, 0.9) !important;
+  background-color: white !important;
+  border: 2px solid rgba(231, 105, 66, 0.9) !important;
+  border-radius: 10px !important;
+}
+
+.load-button:hover {
+  color: white !important;
   background-color: rgba(231, 105, 66, 0.9) !important;
-  border: none !important;
+  border: 2px solid rgba(231, 105, 66, 0.9) !important;
+  transition: .2s;
+  transform: scale(1.04)
+}
+
+.load-button:focus {
+  box-shadow: 0 0 0 0.2rem white !important;
 }
 
 /* Recipe */
@@ -193,7 +209,7 @@ td {
 
 .keyword-badge {
   margin: 5px 5px 5px 5px;
-  background-color: rgba(231, 105, 66, .9);
+  background-color: rgba(231, 105, 66, 0.9);
   color: white;
   font-size: 1.2em !important;
 }
@@ -213,12 +229,21 @@ td {
   border: 2px solid black;
 }
 
-
-.show-recipe-btn {
-  width: 60%;
+.card-image {
+  max-height: 220px;
+  background-size: inherit !important;
 }
 
-.card-image {
-  max-height: 190px;
-  background-size: inherit !important;
+.card-title {
+  font-size: 1.3rem !important;
+  font-weight: 600 !important;
+}
+
+.card-body {
+  min-height: 160px !important;
+}
+
+.karta:hover {
+  transition: .5s;
+  transform: scale(1.03)
 }

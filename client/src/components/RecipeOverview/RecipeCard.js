@@ -5,21 +5,26 @@ import {Link} from 'react-router-dom';
 
 const RecipeCard = (props) => {
   let arr = props.description.split(' ');
-  let trimmedText = arr.slice(0, 10).join(' ').concat('...');
+  let trimmedText = arr.slice(0, 8).join(' ').concat('...');
+  console.log(props)
   return (
-      <Card style={{width: '18rem'}} className="mt-4">
+      <Card style={{width: '22rem'}} className="karta shadow mt-4">
+         <Link className="link-clearing"
+                to={`/show-recipe/${props.id}`}>
         <Card.Img className="card-image" variant="top"
                   src={props.picture}/>
-        <Card.Body className="d-flex flex-column justify-content-between">
-          <Card.Title>{props.name}</Card.Title>
-          <Card.Text className="pb-2">
-            {props.description.length > 50 ? trimmedText : props.description}
+        <Card.Body className="card-body d-flex flex-column justify-content-around pb-1">
+          <Card.Title className="card-title text-dark">{props.name}</Card.Title>
+          <Card.Text className="pb-1">
+            {props.description.length > 40 ? trimmedText : props.description}
           </Card.Text>
-          <Button className="show-recipe-btn"><Link className="link-clearing text-white"
-                        to={`/show-recipe/${props.id}`}>Show
-            me recipe</Link></Button>
         </Card.Body>
+        {/* <Button className="show-recipe-btn mb-3 ml-3"><Link className="link-clearing text-white"
+                        to={`/show-recipe/${props.id}`}>Show
+            me detail</Link></Button> */}
+        </Link>
       </Card>
+
   );
 };
 
