@@ -209,7 +209,7 @@ td {
 
 .keyword-badge {
   margin: 5px 5px 5px 5px;
-  background-color: rgba(231, 105, 66, 0.9);
+  background-color: rgba(231, 105, 66, .9);
   color: white;
   font-size: 1.2em !important;
 }
@@ -229,6 +229,16 @@ td {
   border: 2px solid black;
 }
 
+
+.show-recipe-btn{
+  width: 42%;
+  background-color: rgba(231, 105, 66, .9) !important;
+  border: 1px solid rgba(231, 105, 66, .9) !important;
+  color: white;
+
+  cursor: pointer;
+}
+
 .card-image {
   max-height: 220px;
   background-size: inherit !important;
@@ -240,7 +250,7 @@ td {
 }
 
 .card-body {
-  min-height: 160px !important;
+  max-height: 220px !important;
 }
 
 .karta:hover {
