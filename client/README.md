@@ -1,6 +1,10 @@
-# Getting Started with Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# BCAA-05 Cookbook
+#### Team
+- Haloda Martin
+- Kučera Ján
+- Novák Jan
+- Procházka Radovan 
+---
 
 ## Available Scripts
 
