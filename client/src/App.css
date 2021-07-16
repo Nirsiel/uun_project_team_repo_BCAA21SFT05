@@ -20,11 +20,11 @@ ul {
 
 header {
   width: 100%;
-  background-color:rgba(207, 177, 152, 0.6)
+  background-color: #2CB3E8
 }
 
 .strong {
-  color: rgba(231, 105, 66, 1) !important;
+  color: rgb(231, 105, 66) !important;
   font-weight: bold;
   text-transform: capitalize;
 
@@ -256,4 +256,19 @@ td {
 .karta:hover {
   transition: .5s;
   transform: scale(1.03)
+}
+
+
+/* Form */
+
+.add-form {
+  padding: 20px;
+  background-color: white;
+  border-radius: .5rem;
+}
+
+.dropdown {
+  background-color: white !important;
+  border: 1px solid #ced4da !important;
+  border-radius: .25rem;
 }

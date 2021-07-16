@@ -1,5 +1,7 @@
 import {Button, Form} from 'react-bootstrap';
 import React, {useEffect, useState} from 'react';
+import DropdownMultiselect from "react-multiselect-dropdown-bootstrap";
+
 
 let keywords = [];
 const NewRecipeForm = (props) => {
@@ -119,56 +121,97 @@ const NewRecipeForm = (props) => {
   });
 
   return (
-      <Form noValidate validated={validated}
-            onSubmit={formSubmissionHandler}>
-        <Form.Group controlId="create-recipe-form1">
-          <Form.Label>Recipe name</Form.Label>
-          <Form.Control value={formState.name} onChange={nameChangeHandler}
-                        required type="text"/>
-        </Form.Group>
-        <Form.Group controlId="create-recipe-form2">
-          <Form.Label>Time To Prepare (min)</Form.Label>
-          <Form.Control value={formState.timeToPrepare}
-                        onChange={timeToPrepareChangeHandler} required min="0"
-                        max="2880"
-                        type="number"
-                        placeholder="min"/>
-        </Form.Group>
-        <Form.Group controlId="create-recipe-form4">
-          <Form.Label>Description</Form.Label>
-          <Form.Control value={formState.description}
-                        onChange={descriptionChangeHandler} required
-                        as="textarea"
-                        rows={3}/>
-        </Form.Group>
-        <Form.Group controlId="create-recipe-form4">
-          <Form.Label>Instructions</Form.Label>
-          <Form.Control value={formState.instructions}
-                        onChange={instructionsChangeHandler} required
-                        as="textarea"
-                        rows={3}/>
-        </Form.Group>
-        <Form.Group controlId="create-recipe-form4">
-          <Form.Label>Ingredients</Form.Label>
-          <Form.Control value={formState.ingredients}
-                        onChange={ingredientsChangeHandler} required
-                        type="text"
-                        as="textarea"/>
-        </Form.Group>
-        <Form.Group controlId="create-recipe-form4">
-          <Form.Label>Picture</Form.Label>
-          <Form.Control value={formState.picture}
-                        onChange={pictureChangeHandler} required
-                        type="text"/>
-        </Form.Group>
+    <Form
+      className="add-form shadow p-4"
+      noValidate
+      validated={validated}
+      onSubmit={formSubmissionHandler}
+    >
+      <h2 className="text-center">Create recipe</h2>
+      <Form.Group controlId="create-recipe-form1">
+        <Form.Label className="pl-1">Recipe name</Form.Label>
+        <Form.Control
+          placeholder="Give your recipe a name"
+          value={formState.name}
+          onChange={nameChangeHandler}
+          required
+          type="text"
+        />
+      </Form.Group>
+      <Form.Group controlId="create-recipe-form2">
+        <Form.Label className="pl-1">Time To Prepare (min)</Form.Label>
+        <Form.Control
+          value={formState.timeToPrepare}
+          onChange={timeToPrepareChangeHandler}
+          required
+          min="0"
+          max="2880"
+          type="number"
+          placeholder="min"
+        />
+      </Form.Group>
+      <Form.Group controlId="create-recipe-form4">
+        <Form.Label className="pl-1">Description</Form.Label>
+        <Form.Control
+          placeholder="Describe how awesome your recipe is"
+          value={formState.description}
+          onChange={descriptionChangeHandler}
+          required
+          as="textarea"
+          rows={3}
+        />
+      </Form.Group>
+      <Form.Group controlId="create-recipe-form4">
+        <Form.Label className="pl-1">Instructions</Form.Label>
+        <Form.Control
+          placeholder='Split steps by using Enter'
+          value={formState.instructions}
+          onChange={instructionsChangeHandler}
+          required
+          as="textarea"
+          rows={3}
+        />
+      </Form.Group>
+      <Form.Group controlId="create-recipe-form4">
+        <Form.Label className="pl-1">Ingredients</Form.Label>
+        <Form.Control
+          placeholder='Split ingredient name and amount by using colon ":"'
+          value={formState.ingredients}
+          onChange={ingredientsChangeHandler}
+          required
+          type="text"
+          as="textarea"
+        />
+      </Form.Group>
+      <Form.Group controlId="create-recipe-form4">
+        <Form.Label className="pl-1">Picture</Form.Label>
+        <Form.Control
+          placeholder="Place URL"
+          value={formState.picture}
+          onChange={pictureChangeHandler}
+          required
+          type="text"
+        />
+      </Form.Group>
 
-        <Form.Group controlId="create-recipe-form4">
+
+      {/* https://www.npmjs.com/package/react-multiselect-dropdown-bootstrap */}
+      <Form.Group controlId="create-recipe-form4">
+      <Form.Label className="pl-1">Key Words</Form.Label>
+      <DropdownMultiselect
+        className="add-form-dropdown"
+        options={["Australia", "Canada", "USA", "Poland", "Spain", "France"]}
+        name="countries"
+      />
+      </Form.Group>
+
+      {/* <Form.Group controlId="create-recipe-form4">
           {keywordCheckboxes}
-        </Form.Group>
-        <Button className="mt-4" variant="primary" type="submit">
-          Submit
-        </Button>
-      </Form>
+        </Form.Group> */}
+      <Button className="mt-4 color offset-1 col-10" variant="primary" type="submit">
+        Submit
+      </Button>
+    </Form>
   );
 };
 export default NewRecipeForm;

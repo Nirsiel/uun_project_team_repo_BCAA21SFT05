@@ -41,7 +41,7 @@ const CreateRecipe = () => {
       <header className="p-5">
         <Container>
           <Row className="justify-content-around">
-            <Col md={6}>
+            <Col md={7}>
               <NewRecipeForm items={keywords}
                              onCreateNewRecipe={onCreateNewRecipeHandler}/>
             </Col>
