@@ -2,7 +2,6 @@ import {Button, Form} from 'react-bootstrap';
 import React, {useEffect, useState} from 'react';
 import DropdownMultiselect from "react-multiselect-dropdown-bootstrap";
 
-
 let keywords = [];
 const NewRecipeForm = (props) => {
   const [validated, setValidated] = useState(false);
@@ -120,6 +119,24 @@ const NewRecipeForm = (props) => {
         />);
   });
 
+  
+  const pageName = () => {
+    let urlPathname = window.location.pathname;
+    urlPathname = urlPathname.split("/")
+    let header
+
+    if(urlPathname[1] === "update-recipe") {
+      header = "Updade recipe"
+    } else {
+      header = "Create Recipe"
+    }
+
+    return header
+  }
+
+  
+
+
   return (
     <Form
       className="add-form shadow p-4"
@@ -127,7 +144,7 @@ const NewRecipeForm = (props) => {
       validated={validated}
       onSubmit={formSubmissionHandler}
     >
-      <h2 className="text-center">Create recipe</h2>
+      <h2 className="text-center">{pageName()}</h2>
       <Form.Group controlId="create-recipe-form1">
         <Form.Label className="pl-1">Recipe name</Form.Label>
         <Form.Control
