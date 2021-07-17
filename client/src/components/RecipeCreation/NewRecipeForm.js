@@ -2,7 +2,6 @@ import {Button, Form} from 'react-bootstrap';
 import React, {useEffect, useState} from 'react';
 import DropdownMultiselect from "react-multiselect-dropdown-bootstrap";
 
-let keywords = [];
 const NewRecipeForm = (props) => {
   const [validated, setValidated] = useState(false);
   const [formState, setFormState] = useState({
@@ -12,15 +11,8 @@ const NewRecipeForm = (props) => {
     instructions: '',
     ingredients: '',
     picture: '',
+    keywords: []
   });
-
-  const changeKeywordsHandler = (event) => {
-    if (keywords.includes(event.currentTarget.value)) {
-      keywords = keywords.filter(item => item !== event.currentTarget.value);
-    } else {
-      keywords.push(event.currentTarget.value);
-    }
-  };
 
   const nameChangeHandler = (event) => {
     setFormState((prevState => {
@@ -52,6 +44,11 @@ const NewRecipeForm = (props) => {
       return {...prevState, picture: event.target.value};
     }));
   };
+const keywordChangeHandler = (selected) => {
+  setFormState((prevState => {
+    return {...prevState, keywords: selected};
+  }));
+};
 
   const formSubmissionHandler = (event) => {
     const form = event.currentTarget;
@@ -70,13 +67,12 @@ const NewRecipeForm = (props) => {
       description: formState.description,
       instructions: formState.instructions,
       materials: materials,
-      keywords: keywords,
       picture: formState.picture,
+      keywords: formState.keywords,
     };
     props.onCreateNewRecipe(newRecipeData);
 
     setValidated(true);
-    keywords = [];
     setFormState({
       name: '',
       timeToPrepare: 0,
@@ -101,25 +97,10 @@ const NewRecipeForm = (props) => {
           picture: props.prefetch.picture,
         };
       }));
-      keywords = props.keywords;
+      //TODO: set selected keywords to the dropdown menu
     }
   }, [props.keywords, props.prefetch]);
 
-  const keywordCheckboxes = props.items.map((keyword) => {
-
-    return (
-        <Form.Check
-            key={keyword._id}
-            onChange={changeKeywordsHandler}
-            value={keyword._id}
-            type="checkbox"
-            className="my-1 checkbox"
-            inline
-            label={keyword.value}
-        />);
-  });
-
-  
   const pageName = () => {
     let urlPathname = window.location.pathname;
     urlPathname = urlPathname.split("/")
@@ -134,9 +115,14 @@ const NewRecipeForm = (props) => {
     return header
   }
 
-  
+  if (props.items.length === 0){
+    return (
+        <div>No keywords loaded...</div>
+    );
+  }
 
-
+  console.log("form state: ");
+  console.log(formState);
   return (
     <Form
       className="add-form shadow p-4"
@@ -210,14 +196,15 @@ const NewRecipeForm = (props) => {
           type="text"
         />
       </Form.Group>
-
-
-      {/* https://www.npmjs.com/package/react-multiselect-dropdown-bootstrap */}
+      {/*["Australia", "Canada", "USA", "Poland", "Spain", "France"]*/}
       <Form.Group controlId="create-recipe-form4">
       <Form.Label className="pl-1">Key Words</Form.Label>
       <DropdownMultiselect
         className="add-form-dropdown"
-        options={["Australia", "Canada", "USA", "Poland", "Spain", "France"]}
+        handleOnChange={keywordChangeHandler}
+        options={props.items.map((keyword) => {
+          return {key: keyword._id, label: keyword.value}
+        })}
         name="countries"
       />
       </Form.Group>
