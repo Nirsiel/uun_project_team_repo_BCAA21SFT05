@@ -1,9 +1,15 @@
 # BCAA-05 Cookbook
 #### Team
 - Haloda Martin
+    - Documentation
 - Kučera Ján
+    - Design
+    - Frontend
 - Novák Jan
-- Procházka Radovan 
+    - Backend
+    - Frontend
+- Procházka Radovan
+    - Documentation
 ---
 
 ## Available Scripts
