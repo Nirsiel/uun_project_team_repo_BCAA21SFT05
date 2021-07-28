@@ -32,10 +32,19 @@ header {
 
 .search {
   position: absolute;
-  width: 40%;
-  left: 11%;
+  width: 30%;
+  top: 102px;
+  right: 0;
   z-index: 1000;
   background-color: white;
+}
+
+.search-on {
+  width: 100%;
+}
+
+.search-on:hover {
+  background-color: rgb(248, 248, 248);
 }
 
 article {
@@ -184,11 +193,20 @@ td {
 /* Carousel */
 
 .c-item {
-  max-height: 500px !important;
+  height: calc(100vh - 102px) !important;
 }  
 
 .c-image {
-  background-size: cover;
+  background-size: cover !important;
+}
+
+.c-caption {
+  position: absolute;
+  top: 38%;
+}
+
+.c-header {
+  font-size: 5rem !important;
 }
 
 
@@ -196,7 +214,7 @@ td {
 	content: '';
 	position: absolute;
 	top: 0; left: 0; right: 0; bottom: 0;
-	background: rgba(0, 0, 0, 0.2);
+	background: rgba(0, 0, 0, 0.4);
 	pointer-events: none;
 }
 
