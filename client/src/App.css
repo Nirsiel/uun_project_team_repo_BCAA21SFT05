@@ -1,3 +1,4 @@
+
 /* Basics */
 * {
   padding: 0;
@@ -47,6 +48,14 @@ header {
   background-color: rgb(248, 248, 248);
 }
 
+#search {
+  border: 0 !important;
+  border-bottom: 1px solid #a8a8a8cc !important;
+  background-color: rgba(255, 255, 255, 0) !important;
+  color: rgb(189, 61, 61) !important;
+}
+
+
 article {
   background-color: #f4f7fa;
 }
@@ -61,6 +70,10 @@ article {
 
 .pointer {
   cursor: pointer;
+}
+
+.pt-7 {
+  padding-top: 7rem !important;
 }
 
 /* Texts */
@@ -175,10 +188,6 @@ td {
 
 /* Ingredient list */
 
-.ingredient-list {
-  top: 20px !important;
-}
-
 .ingredient-list-li {
   display: flex;
   align-items: start;
@@ -193,12 +202,12 @@ td {
 /* Carousel */
 
 .c-item {
-  height: calc(100vh - 102px) !important;
+  height: calc(100vh) !important;
 }  
 
-.c-image {
+/* .c-image {
   background-size: cover !important;
-}
+} */
 
 .c-caption {
   position: absolute;
@@ -210,13 +219,13 @@ td {
 }
 
 
-.dark-mood::after {
+/* .dark-mood::after {
 	content: '';
 	position: absolute;
 	top: 0; left: 0; right: 0; bottom: 0;
 	background: rgba(0, 0, 0, 0.4);
 	pointer-events: none;
-}
+} */
 
 .carousel-bug-fix {
   display: block !important;
@@ -294,4 +303,11 @@ td {
 .update-page {
   background-color: #A0E85A;
   background-color: #5AE873;
+}
+
+
+/* Nav */
+
+.nav-opacity {
+  background-color: rgba(255, 255, 255, 0.8) !important;
 }

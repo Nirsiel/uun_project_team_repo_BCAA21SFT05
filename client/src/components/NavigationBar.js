@@ -5,6 +5,9 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Link } from "react-router-dom";
 import RecipeList from '../components/RecipeOverview/RecipeList';
 import RecipeService from '../services/RecipeService';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSearch } from '@fortawesome/free-solid-svg-icons'
+
 
 const NavigationBar = () => {
   const [allRecipes, setAllRecipes] = useState([]);
@@ -35,18 +38,18 @@ const NavigationBar = () => {
   console.log(allRecipes)
 
   return (
-    <div className="bg-light shadow container-fluid">
-      <Navbar className="p-3 px-5" bg="light">
+    <div className="nav-opacity fixed-top shadow container-fluid">
+
+      <Navbar className="p-1 px-4">
         <Navbar.Brand href="/">THE COOKBOOK</Navbar.Brand>
         <Nav className="ml-auto">
-          
-
+      
           <Form className="search-form p-3">
             <Form.Control
-              className="rounded-0 col-12"
+              className="rounded-0"
               type="search"
               id="search"
-              placeholder="Search"
+              placeholder='&#xf075'
               onChange={(event) => {
                 setSearchForm(event.target.value);
               }}
@@ -59,13 +62,12 @@ const NavigationBar = () => {
                   return val.name
                     .toLowerCase()
                     .includes(searchForm.toLowerCase());
-                  // return val
                 }
               })
               .map((val) => {
                 console.log(val)
                 return (
-                  <div className="p-3 search-on">
+                  <div className="p-2 search-on">
                     <Link className="p-2" to={`/show-recipe/${val._id}`}>
                       <img
                         className="float-left pt-2"

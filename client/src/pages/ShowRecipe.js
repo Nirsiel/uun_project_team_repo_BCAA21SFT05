@@ -63,7 +63,7 @@ const ShowRecipe = ({match}) => {
   };
 
   return (
-      <section className="pt-5">
+      <section className="pt-7">
         <Container>
           <Row className="pb-5">
             <Col>
@@ -85,10 +85,10 @@ const ShowRecipe = ({match}) => {
             </Col>
           </Row>
         </Container>
-        <article>
+        <article className="pt-3">
           <Container className="p-4 pb-5">
             <Row className="align-items-start">
-              <Col className="sticky-top ingredient-list bg-white" xs={4}>
+              <Col className="ingredient-list bg-white" xs={4}>
                 <ul className="p-3">
                   <li className="pb-2"><h3>Ingredients</h3></li>
                   {recipe.materials.map((material) => {
@@ -108,18 +108,6 @@ const ShowRecipe = ({match}) => {
                     <h3>Cooking instructions</h3>
                   </li>
                   <RecipeInstructions items={instructions}/>
-                  {/* <li> */}
-                  {/* <div className="clearfix"> */}
-                  {/*<h3 className="float-left p-1 pr-3">1.</h3>*/}
-                  {/* <p> */}
-                  {/* {recipe.instructions} */}
-                  {/* </p> */}
-                  {/* </div> */}
-                  {/* <img className="mx-auto"
-                         src="https://static.libertyprim.com/files/varietes/concombre-hollandais-large.jpg?1569524167"
-                         width="100%" height="auto" alt="Cucumber"/>
-                    <hr/>
-                  </li> */}
                 </ul>
               </Col>
             </Row>

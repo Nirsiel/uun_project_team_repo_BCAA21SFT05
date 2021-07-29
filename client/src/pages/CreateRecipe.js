@@ -38,7 +38,7 @@ const CreateRecipe = () => {
 
 //value={recipeName} onChange={recipeNameChangeHandler} onBlur={recipeBlurChangeHandler}
   return (
-      <header className="p-5">
+      <header className="pt-7 pb-5">
         <Container>
           <Row className="justify-content-around">
             <Col md={7}>
