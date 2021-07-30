@@ -43,13 +43,13 @@ const NavigationBar = () => {
       <Navbar className="p-1 px-4">
         <Navbar.Brand href="/">THE COOKBOOK</Navbar.Brand>
         <Nav className="ml-auto">
-      
+        
           <Form className="search-form p-3">
             <Form.Control
               className="rounded-0"
               type="search"
               id="search"
-              placeholder='&#xf075'
+              placeholder="Search"
               onChange={(event) => {
                 setSearchForm(event.target.value);
               }}
