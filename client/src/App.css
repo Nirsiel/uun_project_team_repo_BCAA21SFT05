@@ -24,6 +24,11 @@ header {
   background-color: #2CB3E8
 }
 
+.faded-text {
+  font-size: .9rem;
+  color: rgba(0, 0, 0, 0.4) !important;
+}
+
 .strong {
   color: rgb(231, 105, 66) !important;
   font-weight: bold;
@@ -34,10 +39,10 @@ header {
 .search {
   position: absolute;
   width: 30%;
-  top: 102px;
+  top: 78px;
   right: 0;
   z-index: 1000;
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.8);
 }
 
 .search-on {
@@ -234,7 +239,7 @@ td {
 /* Keyword */
 
 .keyword-badge {
-  margin: 5px 5px 5px 5px;
+  margin: 5px;
   background-color: rgba(231, 105, 66, 0.902);
   color: white;
   font-size: 1.2em !important;
@@ -304,6 +309,19 @@ td {
   background-color: #5AE873;
 }
 
+.testujeme {
+  font-size: 50px !important;
+  font-weight: 700 !important;
+
+  color: rgba(231, 105, 66, 1) !important;
+}
+
+.badge-time-to-prepare {
+  padding: 5px;
+  margin-left: -4px;
+  display: inline !important;
+  width: 110% !important;
+}
 
 /* Nav */
 
