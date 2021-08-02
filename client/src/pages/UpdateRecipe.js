@@ -39,15 +39,8 @@ const UpdateRecipe = ({match}) => {
 
   return (
 
-      <header className="p-5 update-page">
-        <Container>
-          <Row className="justify-content-around p-5">
-            <Col md={7}>
+      
               <NewRecipeForm items={keywords} prefetch={recipe} onCreateNewRecipe={onUpdateRecipeHandler}/>
-            </Col>
-          </Row>
-        </Container>
-      </header>
   );
 };
 
