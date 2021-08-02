@@ -9,6 +9,23 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
 
 
+
+const AddShowClass = () => {
+  let searchResults = document.getElementById("search-results")
+  
+  searchResults.classList.add('block')
+  searchResults.classList.remove('d-none')
+
+}
+
+const DelShowClass = () => {
+  let searchResults = document.getElementById("search-results")
+  
+  searchResults.classList.remove('block')
+  searchResults.classList.add('d-none')
+
+}
+
 const NavigationBar = () => {
   const [allRecipes, setAllRecipes] = useState([]);
   const [recipes, setRecipes] = useState([]);
@@ -29,13 +46,11 @@ const NavigationBar = () => {
   }, []);
 
 
-
   useEffect(() => {
     loadAllRecipesHandler();
     loadRecipesHandler();
   }, [loadAllRecipesHandler]);
 
-  console.log(allRecipes)
 
   return (
     <div className="nav-opacity fixed-top shadow container-fluid">
@@ -44,7 +59,7 @@ const NavigationBar = () => {
         <Navbar.Brand href="/">THE COOKBOOK</Navbar.Brand>
         <Nav className="ml-auto">
         
-          <Form className="search-form p-3">
+          <Form onFocus={AddShowClass} onBlur={DelShowClass} id="search-form" className="search-form p-3">
             <Form.Control
               className="rounded-0"
               type="search"
@@ -55,7 +70,7 @@ const NavigationBar = () => {
               }}
             />
           </Form>
-          <Row className="search">
+          <Row id="search-results" className="search">
             {allRecipes
               .filter((val) => {
                 if (searchForm !== "") {
