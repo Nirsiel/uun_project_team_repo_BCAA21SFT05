@@ -3,28 +3,24 @@ import { Button, Form, Container, Row, Carousel } from "react-bootstrap";
 import { Navbar, Nav } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Link } from "react-router-dom";
-import RecipeList from '../components/RecipeOverview/RecipeList';
-import RecipeService from '../services/RecipeService';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSearch } from '@fortawesome/free-solid-svg-icons'
-
-
+import RecipeList from "../components/RecipeOverview/RecipeList";
+import RecipeService from "../services/RecipeService";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
 const AddShowClass = () => {
-  let searchResults = document.getElementById("search-results")
-  
-  searchResults.classList.add('block')
-  searchResults.classList.remove('d-none')
+  let searchResults = document.getElementById("search-results");
 
-}
+  searchResults.classList.add("block");
+  searchResults.classList.remove("d-none");
+};
 
 const DelShowClass = () => {
-  let searchResults = document.getElementById("search-results")
-  
-  searchResults.classList.remove('block')
-  searchResults.classList.add('d-none')
+  let searchResults = document.getElementById("search-results");
 
-}
+  searchResults.classList.remove("block");
+  searchResults.classList.add("d-none");
+};
 
 const NavigationBar = () => {
   const [allRecipes, setAllRecipes] = useState([]);
@@ -45,21 +41,22 @@ const NavigationBar = () => {
     });
   }, []);
 
-
   useEffect(() => {
     loadAllRecipesHandler();
     loadRecipesHandler();
   }, [loadAllRecipesHandler]);
 
-
   return (
     <div className="nav-opacity fixed-top shadow container-fluid">
-
       <Navbar className="p-1 px-4">
         <Navbar.Brand href="/">THE COOKBOOK</Navbar.Brand>
         <Nav className="ml-auto">
-        
-          <Form onFocus={AddShowClass} onBlur={DelShowClass} id="search-form" className="search-form p-3">
+          <Form
+            onFocus={AddShowClass}
+            onBlur={DelShowClass}
+            id="search-form"
+            className="search-form p-3"
+          >
             <Form.Control
               className="rounded-0"
               type="search"
@@ -80,10 +77,10 @@ const NavigationBar = () => {
                 }
               })
               .map((val) => {
-                console.log(val)
+                console.log(val);
                 return (
                   <div className="p-2 search-on">
-                    <Link className="p-2" to={`/show-recipe/${val._id}`}>
+                    <Link className="p-2" onMouseDown={event => event.preventDefault()} to={`/show-recipe/${val._id}`}>
                       <img
                         className="float-left pt-2"
                         width="45px"

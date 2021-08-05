@@ -1,8 +1,7 @@
-import { Container, Row, Col, Form } from "react-bootstrap";
-import DropdownMultiselect from "react-multiselect-dropdown-bootstrap";
-import { Button, Image } from "react-bootstrap";
-import "bootstrap/dist/css/bootstrap.min.css";
 import React, { useCallback, useEffect, useState } from "react";
+import { Container, Row, Col, Form, Button, Image } from "react-bootstrap";
+import DropdownMultiselect from "react-multiselect-dropdown-bootstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
 import KeywordsService from "../../services/KeywordsService";
 import RecipeService from "../../services/RecipeService";
 import RatingService from "../../services/RatingService";
@@ -114,7 +113,6 @@ const NewRecipeForm = (props) => {
           picture: props.prefetch.picture,
         };
       });
-      //TODO: set selected keywords to the dropdown menu
     }
   }, [props.keywords, props.prefetch]);
 
@@ -136,8 +134,6 @@ const NewRecipeForm = (props) => {
     return <div>No keywords loaded...</div>;
   }
 
-  console.log("form state: ");
-  console.log(formState);
   return (
     <section className="pt-7 bg-light">
       <h1 className="text-center pb-2">{pageName()}</h1>
@@ -182,7 +178,7 @@ const NewRecipeForm = (props) => {
                   className="testujeme"
                   value={formState.name}
                   onChange={nameChangeHandler}
-                  placeholder="Name your Recipe"
+                  placeholder="Recipe name"
                   required
                   type="text"
                 />
@@ -263,98 +259,6 @@ const NewRecipeForm = (props) => {
         </Row>
       </Form>
     </section>
-    // <Form
-    //   className="add-form shadow p-0 pt-4 pb-4"
-    //   noValidate
-    //   validated={validated}
-    //   onSubmit={formSubmissionHandler}
-    // >
-    //   <h2 className="text-center">{pageName()}</h2>
-    //   <Form.Group controlId="create-recipe-form1">
-    //     <Form.Label className="pl-1">Recipe name</Form.Label>
-    //     <Form.Control
-    //       placeholder="Give your recipe a name"
-    //       value={formState.name}
-    //       onChange={nameChangeHandler}
-    //       required
-    //       type="text"
-    //     />
-    //   </Form.Group>
-    //   <Form.Group controlId="create-recipe-form2">
-    //     <Form.Label className="pl-1">Time To Prepare (min)</Form.Label>
-    //     <Form.Control
-    //       value={formState.timeToPrepare}
-    //       onChange={timeToPrepareChangeHandler}
-    //       required
-    //       min="0"
-    //       max="2880"
-    //       type="number"
-    //       placeholder="min"
-    //     />
-    //   </Form.Group>
-    //   <Form.Group controlId="create-recipe-form4">
-    //     <Form.Label className="pl-1">Description</Form.Label>
-    //     <Form.Control
-    //       placeholder="Describe how awesome your recipe is"
-    //       value={formState.description}
-    //       onChange={descriptionChangeHandler}
-    //       required
-    //       as="textarea"
-    //       rows={3}
-    //     />
-    //   </Form.Group>
-    //   <Form.Group controlId="create-recipe-form4">
-    //     <Form.Label className="pl-1">Instructions</Form.Label>
-    //     <Form.Control
-    //       placeholder='Split steps by using Enter'
-    //       value={formState.instructions}
-    //       onChange={instructionsChangeHandler}
-    //       required
-    //       as="textarea"
-    //       rows={3}
-    //     />
-    //   </Form.Group>
-    //   <Form.Group controlId="create-recipe-form4">
-    //     <Form.Label className="pl-1">Ingredients</Form.Label>
-    //     <Form.Control
-    //       placeholder='Split ingredient name and amount by using colon ":"'
-    //       value={formState.ingredients}
-    //       onChange={ingredientsChangeHandler}
-    //       required
-    //       type="text"
-    //       as="textarea"
-    //     />
-    //   </Form.Group>
-    //   <Form.Group controlId="create-recipe-form4">
-    //     <Form.Label className="pl-1">Picture</Form.Label>
-    //     <Form.Control
-    //       placeholder="Place URL"
-    //       value={formState.picture}
-    //       onChange={pictureChangeHandler}
-    //       required
-    //       type="text"
-    //     />
-    //   </Form.Group>
-    //   {/*["Australia", "Canada", "USA", "Poland", "Spain", "France"]*/}
-    //   <Form.Group controlId="create-recipe-form4">
-    //   <Form.Label className="pl-1">Key Words</Form.Label>
-    //   <DropdownMultiselect
-    //     className="add-form-dropdown"
-    //     handleOnChange={keywordChangeHandler}
-    //     options={props.items.map((keyword) => {
-    //       return {key: keyword._id, label: keyword.value}
-    //     })}
-    //     name="countries"
-    //   />
-    //   </Form.Group>
-
-    //   {/* <Form.Group controlId="create-recipe-form4">
-    //       {keywordCheckboxes}
-    //     </Form.Group> */}
-    //   <Button className="mt-4 color offset-1 col-10" variant="primary" type="submit">
-    //     Submit
-    //   </Button>
-    // </Form>
   );
 };
 export default NewRecipeForm;

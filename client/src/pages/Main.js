@@ -75,30 +75,6 @@ const Main = () => {
             </Carousel.Caption>
           </Carousel.Item>
         </Carousel>
-        {/* <Carousel className="dark-mood">
-            <Carousel.Item className="c-item">
-              <p>Fuckin delicious</p>
-              <img
-                  className="d-block h-100 w-100 c-image"
-                  src={MainCarouselItem1}
-                  alt="First slide"
-              />
-            </Carousel.Item>
-            <Carousel.Item className="c-item">
-              <img
-                  className="d-block h-100 w-100 c-image"
-                  src={MainCarouselItem2}
-                  alt="Second slide"
-              />
-            </Carousel.Item>
-            <Carousel.Item className="c-item">
-              <img
-                  className="d-block h-100 w-100 c-image"
-                  src={MainCarouselItem3}
-                  alt="Third slide"
-              />
-            </Carousel.Item>
-          </Carousel> */}
       </Row>
 
       <section className="p-4">

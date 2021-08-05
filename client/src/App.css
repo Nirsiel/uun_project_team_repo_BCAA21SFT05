@@ -1,3 +1,8 @@
+/* Variables */
+:root {
+  --main-orange-color: rgba(231, 105, 66, 1);
+  --main-black-color: rgba(26, 26, 26, .8);
+}
 
 /* Basics */
 * {
@@ -30,11 +35,33 @@ ul {
 }
 
 .strong {
-  color: rgb(231, 105, 66) !important;
+  color: var(--main-orange-color) !important;
   font-weight: bold;
   text-transform: capitalize;
 
 }
+
+article {
+  background-color: #f4f7fa;
+}
+
+.test1 {
+  background-color: pink;
+}
+
+.test2 {
+  background-color: red;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.pt-7 {
+  padding-top: 7rem !important;
+}
+
+/* Search bar */
 
 .search {
   position: absolute;
@@ -59,58 +86,37 @@ ul {
   background-color: rgba(255, 255, 255, 0) !important;
 } 
 
-
-article {
-  background-color: #f4f7fa;
-}
-
-.test1 {
-  background-color: pink;
-}
-
-.test2 {
-  background-color: red;
-}
-
-.pointer {
-  cursor: pointer;
-}
-
-.pt-7 {
-  padding-top: 7rem !important;
-}
-
 /* Texts */
 h1 {
   font-size: 60px !important;
   font-weight: 700 !important;
 
-  color: rgba(231, 105, 66, 1) !important;
+  color: var(--main-orange-color) !important;
 }
 
 h2 {
   font-size: 50px !important;
   font-weight: 700 !important;
 
-  color: rgba(231, 105, 66, 1) !important;
+  color: var(--main-orange-color) !important;
 }
 
 h3 {
   font-size: 30px !important;
   font-weight: 700 !important;
 
-  color: rgba(26, 25, 25, 0.8) !important;
+  color: var(--main-black-color) !important;
 }
 
 p {
   font-size: 18px;
   margin-bottom: 0 !important;
-  color: rgba(0,0,0,.8) !important;
+  color: var(--main-black-color) !important;
 }
 
 .introduction-text {
   font-size: 18px !important;
-  color: rgba(29, 28, 28, 0.8);
+  color: var(--main-black-color);
 }
 
 .fade-link {
@@ -118,14 +124,14 @@ p {
 }
 
 .fade-link:hover {
-  color: rgba(0, 0, 0, 0.8);
+  color: var(--main-black-color);
 }
 
 
 /* Table */
 table {
   border: 4px solid white  !important;
-  background-color: rgba(231, 105, 66, 0.9);
+  background-color: var(--main-orange-color);
 }
 
 thead {
@@ -149,7 +155,7 @@ td {
 
 /* Others */
 .color {
-  background-color: rgba(231, 105, 66, 0.9) !important;
+  background-color: var(--main-orange-color) !important;
   color: white !important;
   border: none !important;
 }
@@ -157,16 +163,16 @@ td {
 .load-button {
   font-size: 18px !important;
   padding: 10px 18px !important;
-  color: rgba(231, 105, 66, 0.9) !important;
+  color: var(--main-orange-color) !important;
   background-color: white !important;
-  border: 2px solid rgba(231, 105, 66, 0.9) !important;
+  border: 2px solid var(--main-orange-color) !important;
   border-radius: 10px !important;
 }
 
 .load-button:hover {
   color: white !important;
-  background-color: rgba(231, 105, 66, 0.9) !important;
-  border: 2px solid rgba(231, 105, 66, 0.9) !important;
+  background-color: var(--main-orange-color) !important;
+  border: 2px solid var(--main-orange-color) !important;
   transition: .2s;
   transform: scale(1.04)
 }
@@ -185,7 +191,7 @@ td {
   position: absolute;
   top: 10px;
   left: 30px;
-  background-color: rgba(231, 105, 66, .9);
+  background-color: var(--main-orange-color);
   color: white;
   font-size: 2.5em !important;
 }
@@ -209,10 +215,6 @@ td {
   height: calc(100vh) !important;
 }  
 
-/* .c-image {
-  background-size: cover !important;
-} */
-
 .c-caption {
   position: absolute;
   top: 38%;
@@ -223,14 +225,6 @@ td {
 }
 
 
-/* .dark-mood::after {
-	content: '';
-	position: absolute;
-	top: 0; left: 0; right: 0; bottom: 0;
-	background: rgba(0, 0, 0, 0.4);
-	pointer-events: none;
-} */
-
 .carousel-bug-fix {
   display: block !important;
   margin: 0 !important;
@@ -240,7 +234,7 @@ td {
 
 .keyword-badge {
   margin: 5px;
-  background-color: rgba(231, 105, 66, 0.902);
+  background-color: var(--main-orange-color);
   color: white;
   font-size: 1.2em !important;
 }
@@ -250,7 +244,7 @@ td {
 
 .checkbox {
   background-color: rgba(255, 255, 255, 0.7);
-  border: 1px solid rgba(58, 58, 58, 0.4);
+  border: 1px solid var(--main-black-color);
   padding-left: 10px !important;
   padding: 10px;
   border-radius: 10px;
@@ -260,11 +254,12 @@ td {
   border: 2px solid black;
 }
 
+/* Recipe card */
 
 .show-recipe-btn{
   width: 42%;
-  background-color: rgba(231, 105, 66, .9) !important;
-  border: 1px solid rgba(231, 105, 66, .9) !important;
+  background-color: var(--main-orange-color) !important;
+  border: 1px solid var(--main-orange-color) !important;
   color: white;
 
   cursor: pointer;
@@ -313,7 +308,7 @@ td {
   font-size: 50px !important;
   font-weight: 700 !important;
 
-  color: rgba(231, 105, 66, 1) !important;
+  color: var(--main-orange-color) !important;
 }
 
 .badge-time-to-prepare {
@@ -323,7 +318,7 @@ td {
   width: 110% !important;
 }
 
-/* Nav */
+/* Navbar */
 
 .nav-opacity {
   background-color: rgba(255, 255, 255, 0.8) !important;
